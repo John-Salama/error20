@@ -1,7 +1,8 @@
 const workshops = [
   {
     title: "Introduction to Error20 Framework",
-    description: "Learn the basics of the Error20 framework and how to apply it in your decision-making.",
+    description:
+      "Learn the basics of the Error20 framework and how to apply it in your decision-making.",
     date: "2023-05-15",
     duration: "2 hours",
     instructor: "Jane Doe",
@@ -10,7 +11,8 @@ const workshops = [
   },
   {
     title: "Advanced Cognitive Biases",
-    description: "Dive deeper into cognitive biases and their impact on decision-making.",
+    description:
+      "Dive deeper into cognitive biases and their impact on decision-making.",
     date: "2023-06-10",
     duration: "3 hours",
     instructor: "John Smith",
@@ -19,7 +21,8 @@ const workshops = [
   },
   {
     title: "Workshops for Professionals",
-    description: "Tailored workshops for professionals looking to enhance their decision-making skills.",
+    description:
+      "Tailored workshops for professionals looking to enhance their decision-making skills.",
     date: "2023-07-20",
     duration: "4 hours",
     instructor: "Emily Johnson",

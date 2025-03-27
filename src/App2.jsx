@@ -25,6 +25,12 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import navLinks from "./data/navLinks";
+import milestones from "./data/milestones";
+import testimonials from "./data/testimonials";
+import workshops from "./data/workshops";
+import videos from "./data/videos";
+import resources from "./data/resources";
 
 const Error20LandingPage = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -41,132 +47,6 @@ const Error20LandingPage = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Testimonials data
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "UX Designer",
-      quote:
-        "Error20 completely transformed how I approach design problems. The insights on cognitive biases have been invaluable for my user research work.",
-      image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80",
-    },
-    {
-      name: "Michael Chen",
-      role: "Product Manager",
-      quote:
-        "As someone leading product teams, the Error20 framework has been a game-changer for our decision-making process. Highly recommended!",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80",
-    },
-    {
-      name: "Leila Washington",
-      role: "Senior Developer",
-      quote:
-        "I was skeptical at first, but Error20 has completely changed how I think about software architecture and team collaboration.",
-      image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80",
-    },
-  ];
-
-  // Workshop data
-  const workshops = [
-    {
-      title: "Cognitive Biases in Design",
-      description:
-        "Learn how to identify and overcome cognitive biases in your design process.",
-      icon: <Target className="w-6 h-6" />,
-      color: "bg-purple-100",
-    },
-    {
-      title: "Error-Free Decision Making",
-      description:
-        "Master the art of making decisions without falling into common mental traps.",
-      icon: <Rocket className="w-6 h-6" />,
-      color: "bg-indigo-100",
-    },
-    {
-      title: "Creativity Beyond Limits",
-      description:
-        "Break through creative blocks using Error20's proven methodologies.",
-      icon: <PenTool className="w-6 h-6" />,
-      color: "bg-pink-100",
-    },
-    {
-      title: "Team Dynamics & Cognition",
-      description:
-        "Optimize team performance by understanding group cognitive patterns.",
-      icon: <Layers className="w-6 h-6" />,
-      color: "bg-blue-100",
-    },
-  ];
-
-  // PDF resources data
-  const pdfResources = [
-    {
-      title: "Error20 Framework Guide",
-      description:
-        "A comprehensive guide to implementing the Error20 framework in your organization.",
-      icon: <Book />,
-    },
-    {
-      title: "Cognitive Bias Field Manual",
-      description:
-        "50+ cognitive biases and practical strategies to overcome them.",
-      icon: <FileText />,
-    },
-    {
-      title: "Decision-Making Workbook",
-      description:
-        "Interactive exercises to improve your decision-making process.",
-      icon: <Target />,
-    },
-  ];
-
-  // Video preview data
-  const videoContent = [
-    {
-      title: "Understanding System 1 and System 2 Thinking",
-      description: "How our brain processes information and makes decisions.",
-      duration: "43 min",
-      thumbnail:
-        "https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-    },
-    {
-      title: "Overcoming Confirmation Bias in Research",
-      description:
-        "Strategies to ensure your research isn't just confirming what you already believe.",
-      duration: "38 min",
-      thumbnail:
-        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-    },
-    {
-      title: "The Anchoring Effect in Negotiations",
-      description:
-        "How the first number mentioned becomes an 'anchor' in negotiations and pricing decisions.",
-      duration: "45 min",
-      thumbnail:
-        "https://images.unsplash.com/photo-1558403194-611308249627?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-    },
-  ];
-
-  // Milestone data
-  const milestones = [
-    { number: "20+", label: "Cognitive Biases Addressed" },
-    { number: "10k+", label: "Professionals Trained" },
-    { number: "94%", label: "Implementation Success Rate" },
-  ];
-
-  // Navigation links
-  const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Impact", href: "#milestones" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Resources", href: "#resources" },
-    { name: "Videos", href: "#videos" },
-    { name: "Workshops", href: "#workshops" },
-  ];
 
   return (
     <div className="bg-purple-50 text-gray-900 font-inter">
@@ -551,7 +431,7 @@ const Error20LandingPage = () => {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pdfResources.map((resource, index) => (
+            {resources.map((resource, index) => (
               <motion.div
                 key={index}
                 initial={{ y: 30, opacity: 0 }}
@@ -602,8 +482,8 @@ const Error20LandingPage = () => {
                 viewport={{ once: true }}
               >
                 <img
-                  src={videoContent[activeVideo].thumbnail}
-                  alt={videoContent[activeVideo].title}
+                  src={videos[activeVideo].thumbnail}
+                  alt={videos[activeVideo].title}
                   className="w-full h-full object-cover opacity-80"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -617,14 +497,14 @@ const Error20LandingPage = () => {
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
                   <div className="text-white">
                     <h3 className="text-xl md:text-2xl font-bold mb-2">
-                      {videoContent[activeVideo].title}
+                      {videos[activeVideo].title}
                     </h3>
                     <div className="flex items-center space-x-2">
                       <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">
-                        {videoContent[activeVideo].duration}
+                        {videos[activeVideo].duration}
                       </span>
                       <span className="text-gray-300">
-                        {videoContent[activeVideo].description}
+                        {videos[activeVideo].description}
                       </span>
                     </div>
                   </div>
@@ -648,7 +528,7 @@ const Error20LandingPage = () => {
               </motion.div>
 
               <div className="space-y-4">
-                {videoContent.map((video, index) => (
+                {videos.map((video, index) => (
                   <motion.div
                     key={index}
                     initial={{ y: 20, opacity: 0 }}
