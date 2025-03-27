@@ -3,7 +3,7 @@ const resources = [
     title: "Cognitive Biases Overview",
     description: "A comprehensive guide to understanding cognitive biases.",
     icon: "📘",
-    link: "https://example.com/cognitive-biases-overview.pdf",
+    link: "https://kvongcmehsanalibrary.wordpress.com/wp-content/uploads/2021/07/harrypotter.pdf",
   },
   {
     title: "Decision-Making Frameworks",

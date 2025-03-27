@@ -71,15 +71,17 @@ const Videos = () => {
                       <Play className="w-10 h-10 ml-1" />
                     </button>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-1 sm:p-6">
                     <div className="text-white">
-                      <h3 className="text-xl md:text-2xl font-bold mb-2">
-                        {videos[activeVideo].title}
-                      </h3>
-                      <div className="flex items-center space-x-2">
-                        <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-0">
+                          {videos[activeVideo].title}
+                        </h3>
+                        <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm w-fit">
                           {videos[activeVideo].duration}
                         </span>
+                      </div>
+                      <div className="hidden sm:block mt-2">
                         <span className="text-gray-300">
                           {videos[activeVideo].description}
                         </span>
