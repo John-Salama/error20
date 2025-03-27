@@ -5,6 +5,18 @@ import videos from "../../data/videos";
 
 const Videos = () => {
   const [activeVideo, setActiveVideo] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlayClick = () => {
+    setIsPlaying(true);
+  };
+
+  const handleVideoItemClick = (index) => {
+    if (activeVideo !== index) {
+      setActiveVideo(index);
+      setIsPlaying(false);
+    }
+  };
 
   return (
     <section id="videos" className="py-20 bg-purple-100">
@@ -22,34 +34,60 @@ const Videos = () => {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <img
-                src={videos[activeVideo].thumbnail}
-                alt={videos[activeVideo].title}
-                className="w-full h-full object-cover opacity-80"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <button
-                  className="w-20 h-20 bg-purple-700 rounded-full flex items-center justify-center hover:bg-purple-800 transition-colors text-white"
-                  aria-label="Play video"
-                >
-                  <Play className="w-10 h-10 ml-1" />
-                </button>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
-                <div className="text-white">
-                  <h3 className="text-xl md:text-2xl font-bold mb-2">
-                    {videos[activeVideo].title}
-                  </h3>
-                  <div className="flex items-center space-x-2">
-                    <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">
-                      {videos[activeVideo].duration}
-                    </span>
-                    <span className="text-gray-300">
-                      {videos[activeVideo].description}
-                    </span>
+              {isPlaying ? (
+                <iframe
+                  src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
+                    videos[activeVideo].url
+                  )}&show_text=false&data-autoplay="true"&mute=0`}
+                  className="w-full h-full"
+                  style={{
+                    border: "none",
+                    overflow: "hidden",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  scrolling="no"
+                  frameBorder="0"
+                  allowFullScreen={true}
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  title={videos[activeVideo].title}
+                />
+              ) : (
+                <>
+                  <img
+                    src={videos[activeVideo].thumbnail}
+                    alt={videos[activeVideo].title}
+                    className="w-full h-full object-cover opacity-80"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <button
+                      className="w-20 h-20 bg-purple-700 rounded-full flex items-center justify-center hover:bg-purple-800 transition-colors text-white"
+                      aria-label="Play video"
+                      onClick={handlePlayClick}
+                    >
+                      <Play className="w-10 h-10 ml-1" />
+                    </button>
                   </div>
-                </div>
-              </div>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
+                    <div className="text-white">
+                      <h3 className="text-xl md:text-2xl font-bold mb-2">
+                        {videos[activeVideo].title}
+                      </h3>
+                      <div className="flex items-center space-x-2">
+                        <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">
+                          {videos[activeVideo].duration}
+                        </span>
+                        <span className="text-gray-300">
+                          {videos[activeVideo].description}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
             </motion.div>
           </div>
 
@@ -81,7 +119,7 @@ const Videos = () => {
                       ? "bg-white shadow-md border-l-4 border-purple-600"
                       : "bg-purple-50 hover:bg-white"
                   }`}
-                  onClick={() => setActiveVideo(index)}
+                  onClick={() => handleVideoItemClick(index)}
                 >
                   <div className="flex gap-3 items-center">
                     <div className="relative flex-shrink-0 w-16 h-16 rounded overflow-hidden">
