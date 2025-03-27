@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+/* Adding smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: For browsers that support it, make the scroll more customized */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
