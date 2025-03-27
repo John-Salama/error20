@@ -64,7 +64,7 @@ const Hero = () => {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.8, duration: 1 }}
-            className="md:w-1/2 mt-16 md:mt-0"
+            className="hidden md:block md:w-1/2 mt-16 md:mt-0"
           >
             <div className="relative">
               <div className="w-full h-auto bg-white rounded-2xl shadow-2xl overflow-hidden p-6 md:p-8">
@@ -86,22 +86,23 @@ const Hero = () => {
             </div>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute -bottom-50 left-1/2 transform -translate-x-1/2"
-        >
-          <a
-            href="#milestones"
-            className="flex flex-col items-center text-gray-700 hover:text-purple-800 transition-colors"
-          >
-            <span className="mb-2">Scroll to discover</span>
-            <ArrowDown className="animate-bounce" />
-          </a>
-        </motion.div>
       </div>
+
+      {/* Scroll indicator - positioned at bottom of section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+      >
+        <a
+          href="#milestones"
+          className="flex flex-col items-center text-gray-700 hover:text-purple-800 transition-colors"
+        >
+          <span className="mb-2">Scroll to discover</span>
+          <ArrowDown className="animate-bounce" />
+        </a>
+      </motion.div>
 
       {/* Animated background shapes */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
