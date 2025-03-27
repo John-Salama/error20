@@ -6,6 +6,7 @@ import Milestones from "./components/sections/Milestones";
 import Testimonials from "./components/sections/Testimonials";
 import Resources from "./components/sections/Resources";
 import Videos from "./components/sections/Videos";
+import Sponsors from "./components/sections/Sponsors";
 import Workshops from "./components/sections/Workshops";
 import CTA from "./components/sections/CTA";
 
@@ -14,6 +15,7 @@ const App = () => {
     <Layout>
       <Analytics />
       <Hero />
+      <Sponsors />
       <Milestones />
       <Testimonials />
       <Resources />
