@@ -18,11 +18,21 @@ const Milestones = () => {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               viewport={{ once: true }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 10px 25px -5px rgba(124, 58, 237, 0.1)",
+                transition: { duration: 0.2 },
+              }}
               className="bg-white rounded-xl p-8 text-center shadow-lg border border-purple-100"
             >
-              <h3 className="text-5xl font-bold text-purple-700 mb-2">
+              <motion.h3
+                initial={{ scale: 0.8 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
+                className="text-5xl font-bold text-purple-700 mb-2"
+              >
                 {milestone.number}
-              </h3>
+              </motion.h3>
               <p className="text-xl text-gray-600">{milestone.label}</p>
             </motion.div>
           ))}
@@ -39,34 +49,54 @@ const Milestones = () => {
             How Error20 Transforms Your Thinking
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center">
-              <div className="rounded-full bg-purple-100 p-4 mb-4">
-                <Target className="w-8 h-8 text-purple-700" />
-              </div>
-              <h4 className="text-xl font-semibold mb-2">Identify Biases</h4>
-              <p className="text-center text-gray-600">
-                Learn to recognize when your thinking is affected by cognitive
-                biases.
-              </p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="rounded-full bg-indigo-100 p-4 mb-4">
-                <Rocket className="w-8 h-8 text-indigo-700" />
-              </div>
-              <h4 className="text-xl font-semibold mb-2">Apply Frameworks</h4>
-              <p className="text-center text-gray-600">
-                Use structured approaches to overcome limitations in thinking.
-              </p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="rounded-full bg-pink-100 p-4 mb-4">
-                <Check className="w-8 h-8 text-pink-700" />
-              </div>
-              <h4 className="text-xl font-semibold mb-2">Better Outcomes</h4>
-              <p className="text-center text-gray-600">
-                Make decisions that lead to improved results in work and life.
-              </p>
-            </div>
+            {[
+              {
+                icon: <Target className="w-8 h-8 text-purple-700" />,
+                bgColor: "bg-purple-100",
+                title: "Identify Biases",
+                description:
+                  "Learn to recognize when your thinking is affected by cognitive biases.",
+              },
+              {
+                icon: <Rocket className="w-8 h-8 text-indigo-700" />,
+                bgColor: "bg-indigo-100",
+                title: "Apply Frameworks",
+                description:
+                  "Use structured approaches to overcome limitations in thinking.",
+              },
+              {
+                icon: <Check className="w-8 h-8 text-pink-700" />,
+                bgColor: "bg-pink-100",
+                title: "Better Outcomes",
+                description:
+                  "Make decisions that lead to improved results in work and life.",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.2 + 0.7 }}
+                whileHover={{
+                  y: -10,
+                  transition: { duration: 0.2 },
+                }}
+                className="flex flex-col items-center"
+              >
+                <motion.div
+                  className={`rounded-full ${item.bgColor} p-4 mb-4`}
+                  whileHover={{
+                    scale: 1.1,
+                    rotate: [0, 5, -5, 0],
+                    transition: { duration: 0.3 },
+                  }}
+                >
+                  {item.icon}
+                </motion.div>
+                <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
+                <p className="text-center text-gray-600">{item.description}</p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>

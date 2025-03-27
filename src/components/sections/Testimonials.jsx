@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import testimonials from "../../data/testimonials";
 
 const Testimonials = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  const goToPrev = () => {
+    setActiveTestimonial((prev) =>
+      prev === 0 ? testimonials.length - 1 : prev - 1
+    );
+  };
+
+  const goToNext = () => {
+    setActiveTestimonial((prev) =>
+      prev === testimonials.length - 1 ? 0 : prev + 1
+    );
+  };
 
   return (
     <section id="testimonials" className="py-20 bg-purple-100">
@@ -14,6 +27,15 @@ const Testimonials = () => {
 
         <div className="relative">
           <div className="max-w-4xl mx-auto">
+            {/* Navigation arrows */}
+            <button
+              onClick={goToPrev}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-10 bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-100 transition-colors z-10"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="w-6 h-6 text-purple-700" />
+            </button>
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTestimonial}
@@ -62,6 +84,15 @@ const Testimonials = () => {
                 </div>
               </motion.div>
             </AnimatePresence>
+
+            {/* Right arrow */}
+            <button
+              onClick={goToNext}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-10 bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-100 transition-colors z-10"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="w-6 h-6 text-purple-700" />
+            </button>
 
             <div className="flex justify-center mt-8 gap-2">
               {testimonials.map((_, index) => (
