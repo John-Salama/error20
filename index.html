@@ -4,10 +4,63 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Error20 - Master the framework to overcome cognitive biases and make better decisions"
+    />
+    <meta name="theme-color" content="#7e22ce" />
+
+    <!-- Preconnect to critical domains -->
+    <link rel="preconnect" href="https://www.facebook.com" crossorigin />
+    <link rel="preconnect" href="https://placehold.co" />
+
+    <!-- DNS prefetch to speed up external requests -->
+    <link rel="dns-prefetch" href="https://example.com" />
+
+    <!-- Critical preload for key resources -->
+    <link rel="preload" as="image" href="/vite.svg" type="image/svg+xml" />
+
+    <!-- Prevent Flash of Unstyled Content -->
+    <style>
+      body {
+        background-color: #f9f5ff; /* purple-50 */
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+      .loading-spinner {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #f9f5ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .loading-spinner::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        border: 4px solid #e9d5ff;
+        border-top-color: #7e22ce;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
     <title>Error 20</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="loading-spinner"></div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

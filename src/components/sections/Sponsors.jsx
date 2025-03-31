@@ -20,13 +20,7 @@ const Sponsors = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1, staggerChildren: 0.2 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center items-center gap-8 md:gap-12"
-        >
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
           {sponsors.map((sponsor, index) => (
             <motion.div
               key={index}
@@ -50,12 +44,15 @@ const Sponsors = () => {
                 <img
                   src={sponsor.logo}
                   alt={`${sponsor.name} logo`}
+                  width={sponsor.logoWidth}
+                  height={sponsor.logoHeight}
                   className="h-12 md:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                  loading="lazy"
                 />
               </a>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0 }}

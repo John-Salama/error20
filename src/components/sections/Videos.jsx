@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Play, ArrowRight } from "lucide-react";
 import videos from "../../data/videos";
@@ -7,16 +7,20 @@ const Videos = () => {
   const [activeVideo, setActiveVideo] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const handlePlayClick = () => {
+  // Memoized handler functions to prevent unnecessary re-renders
+  const handlePlayClick = useCallback(() => {
     setIsPlaying(true);
-  };
+  }, []);
 
-  const handleVideoItemClick = (index) => {
-    if (activeVideo !== index) {
-      setActiveVideo(index);
-      setIsPlaying(false);
-    }
-  };
+  const handleVideoItemClick = useCallback(
+    (index) => {
+      if (activeVideo !== index) {
+        setActiveVideo(index);
+        setIsPlaying(false);
+      }
+    },
+    [activeVideo]
+  );
 
   return (
     <section id="videos" className="py-20 bg-purple-100">
@@ -38,7 +42,7 @@ const Videos = () => {
                 <iframe
                   src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
                     videos[activeVideo].url
-                  )}&show_text=false&data-autoplay="true"&mute=0`}
+                  )}&show_text=false&mute=0`}
                   className="w-full h-full"
                   style={{
                     border: "none",
@@ -54,6 +58,7 @@ const Videos = () => {
                   allowFullScreen={true}
                   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                   title={videos[activeVideo].title}
+                  loading="lazy"
                 />
               ) : (
                 <>
@@ -61,6 +66,9 @@ const Videos = () => {
                     src={videos[activeVideo].thumbnail}
                     alt={videos[activeVideo].title}
                     className="w-full h-full object-cover opacity-80"
+                    loading="lazy"
+                    width="640"
+                    height="360"
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <button
@@ -94,28 +102,18 @@ const Videos = () => {
           </div>
 
           <div className="lg:w-1/3">
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="mb-8"
-            >
+            <div className="mb-8">
               <h3 className="text-2xl font-bold mb-4">Featured Videos</h3>
               <p className="text-gray-700 mb-6">
                 Learn about cognitive biases and decision-making through our
                 curated video collection.
               </p>
-            </motion.div>
+            </div>
 
             <div className="space-y-4">
               {videos.map((video, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  viewport={{ once: true }}
                   className={`p-4 rounded-lg cursor-pointer transition-all ${
                     activeVideo === index
                       ? "bg-white shadow-md border-l-4 border-purple-600"
@@ -129,6 +127,9 @@ const Videos = () => {
                         src={video.thumbnail}
                         alt={video.title}
                         className="w-full h-full object-cover"
+                        loading="lazy"
+                        width="64"
+                        height="64"
                       />
                       <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
                         <Play className="w-6 h-6 text-white" />
@@ -143,24 +144,18 @@ const Videos = () => {
                       </span>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              viewport={{ once: true }}
-              className="mt-8"
-            >
+            <div className="mt-8">
               <a
                 href="#"
                 className="inline-flex items-center font-semibold bg-white text-purple-700 px-6 py-3 rounded-lg shadow-sm hover:bg-purple-50 transition-colors"
               >
                 View Complete Library <ArrowRight className="ml-2 w-4 h-4" />
               </a>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

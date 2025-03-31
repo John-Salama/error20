@@ -1,66 +1,78 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import navLinks from "../../data/navLinks";
+
+// Extracting static variants outside component to prevent recreation
+const navItemVariants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: (index) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.05 * index,
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  }),
+  hover: {
+    scale: 1.1,
+    color: "#7e22ce", // Purple-700 in hex
+    transition: { duration: 0.2 },
+  },
+};
+
+const logoVariants = {
+  normal: { scale: 1 },
+  hover: {
+    scale: 1.1,
+    rotate: [0, -5, 5, 0],
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut",
+    },
+  },
+};
 
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState("home");
 
-  // Handle scroll for navbar appearance and active section tracking
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+  // Optimized scroll handler with useCallback
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 50);
 
-      // Track active section based on scroll position
-      const sections = navLinks.map((link) => link.href.substring(1));
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveLink(section);
-            break;
-          }
+    // Track active section based on scroll position
+    const sections = navLinks.map((link) => link.href.substring(1));
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          setActiveLink(section);
+          break;
         }
       }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    }
   }, []);
 
-  // Animation variants
-  const navItemVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: (index) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.05 * index,
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    }),
-    hover: {
-      scale: 1.1,
-      color: "#7e22ce", // Purple-700 in hex
-      transition: { duration: 0.2 },
-    },
-  };
+  // Handle scroll for navbar appearance and active section tracking
+  useEffect(() => {
+    // Use passive listener to improve performance
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
-  const logoVariants = {
-    normal: { scale: 1 },
-    hover: {
-      scale: 1.1,
-      rotate: [0, -5, 5, 0],
-      transition: {
-        duration: 0.5,
-        ease: "easeInOut",
-      },
-    },
-  };
+  // Toggle nav function
+  const toggleNav = useCallback(() => {
+    setIsNavOpen((prev) => !prev);
+  }, []);
+
+  // Close nav when a mobile nav link is clicked
+  const handleMobileNavClick = useCallback(() => {
+    setIsNavOpen(false);
+  }, []);
 
   return (
     <motion.header
@@ -136,7 +148,7 @@ const Header = () => {
         {/* Mobile Navigation Button */}
         <motion.button
           className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md border border-purple-100"
-          onClick={() => setIsNavOpen(!isNavOpen)}
+          onClick={toggleNav}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           aria-label={isNavOpen ? "Close menu" : "Open menu"}
@@ -171,7 +183,7 @@ const Header = () => {
           >
             <motion.div
               className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-              onClick={() => setIsNavOpen(false)}
+              onClick={handleMobileNavClick}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -207,7 +219,7 @@ const Header = () => {
                               ? "bg-purple-100 text-purple-700 font-medium"
                               : "text-gray-700 hover:bg-gray-100"
                           }`}
-                          onClick={() => setIsNavOpen(false)}
+                          onClick={handleMobileNavClick}
                         >
                           <span>{link.name}</span>
                           {activeLink === link.href.substring(1) && (
@@ -228,7 +240,7 @@ const Header = () => {
                   <a
                     href="#contact"
                     className="flex items-center justify-center w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-lg font-medium hover:shadow-lg"
-                    onClick={() => setIsNavOpen(false)}
+                    onClick={handleMobileNavClick}
                   >
                     Get Started
                   </a>

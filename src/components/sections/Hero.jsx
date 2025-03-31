@@ -2,47 +2,51 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowDown } from "lucide-react";
 
+// Predefined animation variants for better performance
+const textAnimation = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay, duration: 0.5 },
+  }),
+};
+
 const Hero = () => {
   return (
-    <motion.section
+    <section
       id="home"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(135deg, #f0e6ff 0%, #e4c1f9 25%, #d0a9f5 50%, #c093f0 75%, #b57edc 100%)",
-        backgroundSize: "400% 400%",
-        animation: "gradient 15s ease infinite",
-      }}
+      className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-purple-50 to-purple-200"
     >
       {/* Hero content */}
       <div className="container mx-auto px-6 md:px-12 relative z-10 pt-20">
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 md:pr-12">
             <motion.h1
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
+              initial="hidden"
+              animate="visible"
+              custom={0.2}
+              variants={textAnimation}
               className="text-4xl md:text-6xl font-extrabold mb-6 text-gray-900"
             >
               Master the <span className="text-purple-700">Error20</span>{" "}
               framework
             </motion.h1>
             <motion.p
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              initial="hidden"
+              animate="visible"
+              custom={0.4}
+              variants={textAnimation}
               className="text-xl md:text-2xl mb-8 text-gray-800"
             >
               Overcome cognitive biases and make better decisions in your
               professional and personal life.
             </motion.p>
             <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
+              initial="hidden"
+              animate="visible"
+              custom={0.6}
+              variants={textAnimation}
               className="flex flex-col sm:flex-row gap-4"
             >
               <a
@@ -60,12 +64,7 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.8, duration: 1 }}
-            className="hidden md:block md:w-1/2 mt-16 md:mt-0"
-          >
+          <div className="hidden md:block md:w-1/2 mt-16 md:mt-0">
             <div className="relative">
               <div className="w-full h-auto bg-white rounded-2xl shadow-2xl overflow-hidden p-6 md:p-8">
                 <div className="flex items-center gap-3 mb-6">
@@ -84,7 +83,7 @@ const Hero = () => {
               </div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-full opacity-60 blur-2xl"></div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
@@ -92,7 +91,7 @@ const Hero = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
       >
         <a
@@ -110,11 +109,12 @@ const Hero = () => {
           className="absolute w-64 h-64 rounded-full bg-purple-300 opacity-20"
           style={{ top: "10%", left: "5%" }}
           animate={{
-            x: [0, 30, 0],
-            y: [0, -40, 0],
+            y: [0, 30, 0],
+            x: [0, 20, 0],
+            scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 10,
+            duration: 18,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -123,30 +123,33 @@ const Hero = () => {
           className="absolute w-96 h-96 rounded-full bg-indigo-400 opacity-20"
           style={{ bottom: "10%", right: "10%" }}
           animate={{
-            x: [0, -50, 0],
-            y: [0, 30, 0],
+            y: [0, -40, 0],
+            x: [0, -30, 0],
+            scale: [1, 1.15, 1],
           }}
           transition={{
-            duration: 12,
+            duration: 22,
             repeat: Infinity,
             ease: "easeInOut",
+            repeatType: "reverse",
           }}
         />
         <motion.div
           className="absolute w-48 h-48 rounded-full bg-pink-300 opacity-20"
           style={{ top: "40%", right: "25%" }}
           animate={{
-            x: [0, 40, 0],
-            y: [0, 50, 0],
+            y: [0, 25, 0],
+            x: [0, -15, 0],
+            scale: [1, 1.05, 1],
           }}
           transition={{
-            duration: 8,
+            duration: 15,
             repeat: Infinity,
             ease: "easeInOut",
           }}
         />
       </div>
-    </motion.section>
+    </section>
   );
 };
 
