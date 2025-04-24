@@ -2,17 +2,6 @@ import thumbnail1 from "./thumbnail/1.jpg";
 
 const videos = [
   {
-    title: "تدخل الأهل في حياتنا",
-    titleEn: "Parents' Influence in Our Lives",
-    description:
-      "هل تدخل الأهل في حياتنا من اختيار الشريك أو الشغل أو الكليات تسلط أم رحمة؟ مع أستاذة علم النفس أسماء فوزي",
-    descriptionEn:
-      "Is parents' involvement in our lives, from choosing a partner to work or colleges, controlling or merciful? With psychology professor Asmaa Fawzy",
-    thumbnail: thumbnail1,
-    duration: "09:30",
-    url: "https://www.facebook.com/61572635124155/videos/2510540209315122",
-  },
-  {
     title: "جمل من أهلنا تؤثر فينا",
     titleEn: "Impactful Words from Our Parents",
     description:
@@ -33,6 +22,17 @@ const videos = [
     thumbnail: thumbnail1,
     duration: "21:30",
     url: "https://www.facebook.com/watch/?v=427310643807696",
+  },
+  {
+    title: "تدخل الأهل في حياتنا",
+    titleEn: "Parents' Influence in Our Lives",
+    description:
+      "هل تدخل الأهل في حياتنا من اختيار الشريك أو الشغل أو الكليات تسلط أم رحمة؟ مع أستاذة علم النفس أسماء فوزي",
+    descriptionEn:
+      "Is parents' involvement in our lives, from choosing a partner to work or colleges, controlling or merciful? With psychology professor Asmaa Fawzy",
+    thumbnail: thumbnail1,
+    duration: "09:30",
+    url: "https://www.facebook.com/61572635124155/videos/2510540209315122",
   },
   {
     title: "أزمة ربع العمر",

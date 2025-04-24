@@ -206,27 +206,6 @@ const Videos = () => {
                 </div>
               ))}
             </div>
-
-            <div
-              className={`mt-8 text-${language === "ar" ? "right" : "left"}`}
-            >
-              <a
-                href="#"
-                className={`inline-flex items-center font-semibold bg-white text-purple-700 px-6 py-3 rounded-lg shadow-sm hover:bg-purple-50 transition-colors`}
-              >
-                {language === "ar" ? (
-                  <>
-                    <ArrowRight className="ml-2 w-4 h-4 rotate-180" />{" "}
-                    {content.viewFullLibrary}
-                  </>
-                ) : (
-                  <>
-                    {content.viewFullLibrary}{" "}
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </>
-                )}
-              </a>
-            </div>
           </div>
         </div>
       </div>
