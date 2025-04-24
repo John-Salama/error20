@@ -2,9 +2,29 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import testimonials from "../../data/testimonials";
+import { useLanguage } from "../../context/useLanguage";
+import { translations } from "../../translations";
 
 const Testimonials = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  // Translated section content
+  const content = {
+    ar: {
+      title: "الفعاليات والندوات",
+      previousLabel: "الفعالية السابقة",
+      nextLabel: "الفعالية التالية",
+      gotoLabel: "الانتقال إلى الفعالية",
+    },
+    en: {
+      title: "Events and Seminars",
+      previousLabel: "Previous Event",
+      nextLabel: "Next Event",
+      gotoLabel: "Go to Event",
+    },
+  }[language];
 
   const goToPrev = () => {
     setActiveTestimonial((prev) =>
@@ -19,10 +39,14 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="py-20 bg-purple-100" dir="rtl">
+    <section
+      id="testimonials"
+      className="py-20 bg-purple-100"
+      dir={language === "ar" ? "rtl" : "ltr"}
+    >
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-          الفعاليات والندوات
+          {content.title}
         </h2>
 
         <div className="relative">
@@ -30,23 +54,39 @@ const Testimonials = () => {
             {/* Navigation arrows */}
             <button
               onClick={goToPrev}
-              className="absolute right-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-10 bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-100 transition-colors z-10"
-              aria-label="الفعالية السابقة"
+              className={`absolute ${
+                language === "ar" ? "right-0" : "left-0"
+              } top-1/2 -translate-y-1/2 ${
+                language === "ar"
+                  ? "-translate-x-4 md:-translate-x-10"
+                  : "translate-x-4 md:translate-x-10"
+              } bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-100 transition-colors z-10`}
+              aria-label={content.previousLabel}
             >
-              <ChevronRight className="w-6 h-6 text-purple-700" />
+              {language === "ar" ? (
+                <ChevronRight className="w-6 h-6 text-purple-700" />
+              ) : (
+                <ChevronLeft className="w-6 h-6 text-purple-700" />
+              )}
             </button>
 
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTestimonial}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: language === "ar" ? -20 : 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 100 }}
+                exit={{ opacity: 0, x: language === "ar" ? 100 : -100 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white rounded-xl p-8 md:p-12 shadow-xl relative text-right"
+                className={`bg-white rounded-xl p-8 md:p-12 shadow-xl relative text-${
+                  language === "ar" ? "right" : "left"
+                }`}
               >
                 <svg
-                  className="absolute top-0 right-0 transform -translate-x-6 -translate-y-6 h-16 w-16 text-purple-300 opacity-50"
+                  className={`absolute top-0 ${
+                    language === "ar"
+                      ? "right-0 transform -translate-x-6"
+                      : "left-0 transform translate-x-6"
+                  } -translate-y-6 h-16 w-16 text-purple-300 opacity-50`}
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -63,14 +103,22 @@ const Testimonials = () => {
                 <div className="flex flex-col md:flex-row md:items-center gap-8">
                   <div className="md:w-full">
                     <blockquote className="text-xl md:text-2xl mb-6">
-                      "{testimonials[activeTestimonial].quote}"
+                      "
+                      {language === "ar"
+                        ? testimonials[activeTestimonial].quote
+                        : testimonials[activeTestimonial].quoteEn}
+                      "
                     </blockquote>
                     <div>
                       <div className="font-bold text-lg">
-                        {testimonials[activeTestimonial].name}
+                        {language === "ar"
+                          ? testimonials[activeTestimonial].name
+                          : testimonials[activeTestimonial].nameEn}
                       </div>
                       <div className="text-purple-600">
-                        {testimonials[activeTestimonial].role}
+                        {language === "ar"
+                          ? testimonials[activeTestimonial].role
+                          : testimonials[activeTestimonial].roleEn}
                       </div>
                     </div>
                   </div>
@@ -78,13 +126,23 @@ const Testimonials = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Left arrow */}
+            {/* Right/Next arrow */}
             <button
               onClick={goToNext}
-              className="absolute left-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-10 bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-100 transition-colors z-10"
-              aria-label="الفعالية التالية"
+              className={`absolute ${
+                language === "ar" ? "left-0" : "right-0"
+              } top-1/2 -translate-y-1/2 ${
+                language === "ar"
+                  ? "translate-x-4 md:translate-x-10"
+                  : "-translate-x-4 md:-translate-x-10"
+              } bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-100 transition-colors z-10`}
+              aria-label={content.nextLabel}
             >
-              <ChevronLeft className="w-6 h-6 text-purple-700" />
+              {language === "ar" ? (
+                <ChevronLeft className="w-6 h-6 text-purple-700" />
+              ) : (
+                <ChevronRight className="w-6 h-6 text-purple-700" />
+              )}
             </button>
 
             <div className="flex justify-center mt-8 gap-2">
@@ -97,7 +155,7 @@ const Testimonials = () => {
                       ? "bg-purple-600"
                       : "bg-purple-300"
                   }`}
-                  aria-label={`الانتقال إلى الفعالية ${index + 1}`}
+                  aria-label={`${content.gotoLabel} ${index + 1}`}
                 />
               ))}
             </div>

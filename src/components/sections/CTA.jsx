@@ -1,13 +1,37 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useLanguage } from "../../context/useLanguage";
+import { translations } from "../../translations";
 
 const CTA = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  // Translated CTA content that's not in our translation files
+  const ctaContent = {
+    ar: {
+      heading: "هل أنت مستعد لتجاوز أزمة ربع العمر مع ايرور 20؟",
+      description:
+        "انضم إلى آلاف الشباب الذين تمكنوا من تغيير حياتهم وتطوير مهاراتهم واكتشاف ذواتهم.",
+      contactButton: "تواصل معنا الآن",
+      joinButton: "انضم إلى مجتمعنا",
+    },
+    en: {
+      heading:
+        "Are you ready to overcome your quarter-life crisis with Error 20?",
+      description:
+        "Join thousands of young adults who have changed their lives, developed their skills, and discovered themselves.",
+      contactButton: "Contact Us Now",
+      joinButton: "Join Our Community",
+    },
+  }[language];
+
   return (
     <section
       id="contact"
       className="relative overflow-hidden bg-gradient-to-r from-purple-600 to-indigo-600 py-20 text-white"
-      dir="rtl"
+      dir={language === "ar" ? "rtl" : "ltr"}
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 z-0">
@@ -56,7 +80,7 @@ const CTA = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold mb-6"
           >
-            هل أنت مستعد لتجاوز أزمة ربع العمر مع ايرور 20؟
+            {ctaContent.heading}
           </motion.h2>
 
           <motion.p
@@ -66,14 +90,13 @@ const CTA = () => {
             viewport={{ once: true }}
             className="text-xl opacity-90 mb-10"
           >
-            انضم إلى آلاف الشباب الذين تمكنوا من تغيير حياتهم وتطوير مهاراتهم
-            واكتشاف ذواتهم.
+            {ctaContent.description}
           </motion.p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <motion.a
               href="#"
-              initial={{ x: -30, opacity: 0 }}
+              initial={{ x: language === "ar" ? -30 : 30, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               whileHover={{
@@ -84,12 +107,17 @@ const CTA = () => {
               viewport={{ once: true }}
               className="px-8 py-4 text-lg font-semibold rounded-lg bg-white text-purple-700 hover:bg-gray-100 transition-colors flex items-center justify-center"
             >
-              تواصل معنا الآن <ArrowRight className="mr-2 w-5 h-5 rotate-180" />
+              {ctaContent.contactButton}
+              {language === "ar" ? (
+                <ArrowRight className="mr-2 w-5 h-5 rotate-180" />
+              ) : (
+                <ArrowRight className="ml-2 w-5 h-5" />
+              )}
             </motion.a>
 
             <motion.a
               href="#"
-              initial={{ x: 30, opacity: 0 }}
+              initial={{ x: language === "ar" ? 30 : -30, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
               whileHover={{
@@ -100,7 +128,7 @@ const CTA = () => {
               viewport={{ once: true }}
               className="px-8 py-4 text-lg font-semibold rounded-lg border-2 border-white bg-transparent hover:bg-white hover:text-purple-700 transition-all flex items-center justify-center"
             >
-              انضم إلى مجتمعنا
+              {ctaContent.joinButton}
             </motion.a>
           </div>
         </motion.div>

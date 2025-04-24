@@ -2,10 +2,34 @@ import React, { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Play, ArrowRight } from "lucide-react";
 import videos from "../../data/videos";
+import { useLanguage } from "../../context/useLanguage";
+import { translations } from "../../translations";
 
 const Videos = () => {
   const [activeVideo, setActiveVideo] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  // Translated section content
+  const content = {
+    ar: {
+      title: "البودكاست والمحتوى المرئي",
+      featuredEpisodes: "حلقات مميزة",
+      discoverContent:
+        "اكتشف محتوى متنوع لمساعدتك على فهم أزمة ربع العمر وتخطي التحديات النفسية والمهنية",
+      viewFullLibrary: "عرض المكتبة كاملة",
+      playVideo: "تشغيل الفيديو",
+    },
+    en: {
+      title: "Podcasts and Video Content",
+      featuredEpisodes: "Featured Episodes",
+      discoverContent:
+        "Discover diverse content to help you understand the quarter-life crisis and overcome psychological and professional challenges",
+      viewFullLibrary: "View Full Library",
+      playVideo: "Play Video",
+    },
+  }[language];
 
   // Memoized handler functions to prevent unnecessary re-renders
   const handlePlayClick = useCallback(() => {
@@ -23,10 +47,14 @@ const Videos = () => {
   );
 
   return (
-    <section id="videos" className="py-20 bg-purple-100" dir="rtl">
+    <section
+      id="videos"
+      className="py-20 bg-purple-100"
+      dir={language === "ar" ? "rtl" : "ltr"}
+    >
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          البودكاست والمحتوى المرئي
+          {content.title}
         </h2>
 
         <div className="flex flex-col lg:flex-row gap-12">
@@ -57,14 +85,22 @@ const Videos = () => {
                   frameBorder="0"
                   allowFullScreen={true}
                   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                  title={videos[activeVideo].title}
+                  title={
+                    language === "ar"
+                      ? videos[activeVideo].title
+                      : videos[activeVideo].titleEn
+                  }
                   loading="lazy"
                 />
               ) : (
                 <>
                   <img
                     src={videos[activeVideo].thumbnail}
-                    alt={videos[activeVideo].title}
+                    alt={
+                      language === "ar"
+                        ? videos[activeVideo].title
+                        : videos[activeVideo].titleEn
+                    }
                     className="w-full h-full object-cover opacity-80"
                     loading="lazy"
                     width="640"
@@ -73,25 +109,43 @@ const Videos = () => {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <button
                       className="w-20 h-20 bg-purple-700 rounded-full flex items-center justify-center hover:bg-purple-800 transition-colors text-white"
-                      aria-label="تشغيل الفيديو"
+                      aria-label={content.playVideo}
                       onClick={handlePlayClick}
                     >
-                      <Play className="w-10 h-10 ml-1" />
+                      <Play
+                        className={`w-10 h-10 ${
+                          language === "ar" ? "ml-1" : "mr-1"
+                        }`}
+                      />
                     </button>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-1 sm:p-6">
-                    <div className="text-white text-right">
+                    <div
+                      className={`text-white text-${
+                        language === "ar" ? "right" : "left"
+                      }`}
+                    >
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                         <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-0">
-                          {videos[activeVideo].title}
+                          {language === "ar"
+                            ? videos[activeVideo].title
+                            : videos[activeVideo].titleEn}
                         </h3>
-                        <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm w-fit mr-auto sm:mr-0">
+                        <span
+                          className={`bg-purple-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm w-fit ${
+                            language === "ar"
+                              ? "mr-auto sm:mr-0"
+                              : "ml-auto sm:ml-0"
+                          }`}
+                        >
                           {videos[activeVideo].duration}
                         </span>
                       </div>
                       <div className="hidden sm:block mt-2">
                         <span className="text-gray-300">
-                          {videos[activeVideo].description}
+                          {language === "ar"
+                            ? videos[activeVideo].description
+                            : videos[activeVideo].descriptionEn}
                         </span>
                       </div>
                     </div>
@@ -102,21 +156,26 @@ const Videos = () => {
           </div>
 
           <div className="lg:w-1/3">
-            <div className="mb-8 text-right">
-              <h3 className="text-2xl font-bold mb-4">حلقات مميزة</h3>
-              <p className="text-gray-700 mb-6">
-                اكتشف محتوى متنوع لمساعدتك على فهم أزمة ربع العمر وتخطي التحديات
-                النفسية والمهنية
-              </p>
+            <div
+              className={`mb-8 text-${language === "ar" ? "right" : "left"}`}
+            >
+              <h3 className="text-2xl font-bold mb-4">
+                {content.featuredEpisodes}
+              </h3>
+              <p className="text-gray-700 mb-6">{content.discoverContent}</p>
             </div>
 
             <div className="space-y-4">
               {videos.map((video, index) => (
                 <div
                   key={index}
-                  className={`p-4 rounded-lg cursor-pointer transition-all text-right ${
+                  className={`p-4 rounded-lg cursor-pointer transition-all text-${
+                    language === "ar" ? "right" : "left"
+                  } ${
                     activeVideo === index
-                      ? "bg-white shadow-md border-r-4 border-purple-600"
+                      ? `bg-white shadow-md ${
+                          language === "ar" ? "border-r-4" : "border-l-4"
+                        } border-purple-600`
                       : "bg-purple-50 hover:bg-white"
                   }`}
                   onClick={() => handleVideoItemClick(index)}
@@ -125,7 +184,7 @@ const Videos = () => {
                     <div className="relative flex-shrink-0 w-16 h-16 rounded overflow-hidden">
                       <img
                         src={video.thumbnail}
-                        alt={video.title}
+                        alt={language === "ar" ? video.title : video.titleEn}
                         className="w-full h-full object-cover"
                         loading="lazy"
                         width="64"
@@ -137,7 +196,7 @@ const Videos = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-sm md:text-base line-clamp-1">
-                        {video.title}
+                        {language === "ar" ? video.title : video.titleEn}
                       </h4>
                       <span className="text-xs text-purple-700">
                         {video.duration}
@@ -148,13 +207,24 @@ const Videos = () => {
               ))}
             </div>
 
-            <div className="mt-8 text-right">
+            <div
+              className={`mt-8 text-${language === "ar" ? "right" : "left"}`}
+            >
               <a
                 href="#"
-                className="inline-flex items-center font-semibold bg-white text-purple-700 px-6 py-3 rounded-lg shadow-sm hover:bg-purple-50 transition-colors"
+                className={`inline-flex items-center font-semibold bg-white text-purple-700 px-6 py-3 rounded-lg shadow-sm hover:bg-purple-50 transition-colors`}
               >
-                <ArrowRight className="ml-2 w-4 h-4 rotate-180" /> عرض المكتبة
-                كاملة
+                {language === "ar" ? (
+                  <>
+                    <ArrowRight className="ml-2 w-4 h-4 rotate-180" />{" "}
+                    {content.viewFullLibrary}
+                  </>
+                ) : (
+                  <>
+                    {content.viewFullLibrary}{" "}
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </>
+                )}
               </a>
             </div>
           </div>

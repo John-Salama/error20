@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowDown } from "lucide-react";
+import { useLanguage } from "../../context/useLanguage";
+import { translations } from "../../translations";
 
 // Predefined animation variants for better performance
 const textAnimation = {
@@ -13,11 +15,14 @@ const textAnimation = {
 };
 
 const Hero = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-purple-50 to-purple-200"
-      dir="rtl"
+      dir={language === "ar" ? "rtl" : "ltr"}
     >
       {/* Hero content */}
       <div className="container mx-auto px-6 md:px-12 relative z-10 pt-20">
@@ -30,7 +35,7 @@ const Hero = () => {
               variants={textAnimation}
               className="text-4xl md:text-6xl font-extrabold mb-6 text-gray-900"
             >
-              لتخطي أزمة ربع العمر بوعي
+              {t.hero.title}
             </motion.h1>
             <motion.p
               initial="hidden"
@@ -39,8 +44,7 @@ const Hero = () => {
               variants={textAnimation}
               className="text-xl md:text-2xl mb-8 text-gray-800"
             >
-              اكتشف ذاتك، حدد شغفك، وتغلب على التحديات النفسية والمهنية التي
-              تواجه الشباب
+              {t.hero.subtitle}
             </motion.p>
             <motion.div
               initial="hidden"
@@ -53,14 +57,18 @@ const Hero = () => {
                 href="#quiz"
                 className="px-8 py-4 text-lg font-semibold rounded-lg bg-purple-700 text-white hover:bg-purple-800 transition-colors flex items-center justify-center"
               >
-                اختبار الوعي الذاتي{" "}
-                <ArrowRight className="mr-2 w-5 h-5 rotate-180" />
+                {t.hero.selfAwarenessTest}{" "}
+                <ArrowRight
+                  className={`${
+                    language === "ar" ? "mr-2 rotate-180" : "ml-2"
+                  } w-5 h-5`}
+                />
               </a>
               <a
                 href="#resources"
                 className="px-8 py-4 text-lg font-semibold rounded-lg border-2 border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white transition-all flex items-center justify-center"
               >
-                الموارد والدعم
+                {t.hero.resourcesSupport}
               </a>
             </motion.div>
           </div>
@@ -73,10 +81,22 @@ const Hero = () => {
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
-                <div className="space-y-4 text-right">
-                  <div className="h-10 bg-purple-100 rounded-md w-3/4 mr-auto"></div>
+                <div
+                  className={`space-y-4 text-${
+                    language === "ar" ? "right" : "left"
+                  }`}
+                >
+                  <div
+                    className={`h-10 bg-purple-100 rounded-md w-3/4 ${
+                      language === "ar" ? "mr-auto" : "ml-auto"
+                    }`}
+                  ></div>
                   <div className="h-32 bg-purple-100 rounded-md"></div>
-                  <div className="flex gap-3 justify-end">
+                  <div
+                    className={`flex gap-3 justify-${
+                      language === "ar" ? "end" : "start"
+                    }`}
+                  >
                     <div className="h-8 bg-purple-300 rounded-md w-1/4"></div>
                     <div className="h-8 bg-purple-200 rounded-md w-1/3"></div>
                   </div>
@@ -100,7 +120,7 @@ const Hero = () => {
           href="#milestones"
           className="flex flex-col items-center text-gray-700 hover:text-purple-800 transition-colors"
         >
-          <span className="mb-2">اكتشف المزيد</span>
+          <span className="mb-2">{t.hero.discoverMore}</span>
           <ArrowDown className="animate-bounce" />
         </a>
       </motion.div>

@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import Layout from "./components/layout/Layout";
 import Hero from "./components/sections/Hero";
+import { LanguageProvider } from "./context/LanguageProvider";
 
 // Lazy load non-critical sections
 const Sponsors = lazy(() => import("./components/sections/Sponsors"));
@@ -22,34 +23,36 @@ const SectionLoader = () => (
 
 const App = () => {
   return (
-    <Layout>
-      <Analytics />
-      <Hero />
-      <Suspense fallback={<SectionLoader />}>
-        <Sponsors />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <Milestones />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <Testimonials />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <Resources />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <Videos />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <Workshops />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <Quiz />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <CTA />
-      </Suspense>
-    </Layout>
+    <LanguageProvider>
+      <Layout>
+        <Analytics />
+        <Hero />
+        <Suspense fallback={<SectionLoader />}>
+          <Sponsors />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <Milestones />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <Testimonials />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <Resources />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <Videos />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <Workshops />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <Quiz />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <CTA />
+        </Suspense>
+      </Layout>
+    </LanguageProvider>
   );
 };
 

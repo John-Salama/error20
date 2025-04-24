@@ -1,10 +1,32 @@
 import React from "react";
 import { motion } from "framer-motion";
 import sponsors from "../../data/sponsors";
+import { useLanguage } from "../../context/useLanguage";
+import { translations } from "../../translations";
 
 const Sponsors = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  // Translated section texts
+  const content = {
+    ar: {
+      title: "شركاؤنا",
+      subtitle: "نفتخر بدعم مؤسسات رائدة تؤمن برسالتنا ومهمتنا.",
+    },
+    en: {
+      title: "Our Partners",
+      subtitle:
+        "We are proud to be supported by leading organizations that believe in our mission.",
+    },
+  }[language];
+
   return (
-    <section id="sponsors" className="py-16 bg-white" dir="rtl">
+    <section
+      id="sponsors"
+      className="py-16 bg-white"
+      dir={language === "ar" ? "rtl" : "ltr"}
+    >
       <div className="container mx-auto px-6 md:px-12">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
@@ -13,9 +35,11 @@ const Sponsors = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">شركاؤنا</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            {content.title}
+          </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            نفتخر بدعم مؤسسات رائدة تؤمن برسالتنا ومهمتنا.
+            {content.subtitle}
           </p>
         </motion.div>
 
@@ -48,9 +72,9 @@ const Sponsors = () => {
                   className="h-12 md:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                   loading="lazy"
                 />
-                {sponsor.fullName && (
+                {(sponsor.fullName || sponsor.fullNameEn) && (
                   <p className="mt-3 text-sm text-gray-700 font-medium text-center">
-                    {sponsor.fullName}
+                    {language === "ar" ? sponsor.fullName : sponsor.fullNameEn}
                   </p>
                 )}
               </a>

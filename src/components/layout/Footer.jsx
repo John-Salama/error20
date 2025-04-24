@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Instagram, Facebook } from "lucide-react";
 import logoImage from "../../data/thumbnail/logo.png";
+import { useLanguage } from "../../context/useLanguage";
+import { translations } from "../../translations";
 
 // Custom TikTok icon component
 const TikTokIcon = ({ className }) => (
@@ -23,6 +25,67 @@ const TikTokIcon = ({ className }) => (
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  // Define translated footer links and sections
+  const resources = {
+    ar: [
+      { label: "المدونة", href: "#" },
+      { label: "البودكاست", href: "#videos" },
+      { label: "ملفات مجانية", href: "#resources" },
+      { label: "دراسات وأبحاث", href: "#" },
+    ],
+    en: [
+      { label: "Blog", href: "#" },
+      { label: "Podcast", href: "#videos" },
+      { label: "Free Resources", href: "#resources" },
+      { label: "Research", href: "#" },
+    ],
+  }[language];
+
+  const aboutUs = {
+    ar: [
+      { label: "قصتنا", href: "#" },
+      { label: "فريق العمل", href: "#" },
+      { label: "انضم إلينا", href: "#" },
+      { label: "تواصل معنا", href: "#contact" },
+    ],
+    en: [
+      { label: "Our Story", href: "#" },
+      { label: "Our Team", href: "#" },
+      { label: "Join Us", href: "#" },
+      { label: "Contact Us", href: "#contact" },
+    ],
+  }[language];
+
+  const socialText = {
+    ar: {
+      instagram: "انستجرام",
+      facebook: "فيسبوك",
+      tiktok: "تيك توك",
+      about:
+        "مساعدة الشباب على تخطي التحديات النفسية وتحقيق التوازن في حياتهم المهنية والشخصية",
+    },
+    en: {
+      instagram: "Instagram",
+      facebook: "Facebook",
+      tiktok: "TikTok",
+      about:
+        "Helping young adults overcome psychological challenges and achieve balance in their professional and personal lives",
+    },
+  }[language];
+
+  const footerSections = {
+    ar: [
+      { title: "موارد", links: resources },
+      { title: "من نحن", links: aboutUs },
+    ],
+    en: [
+      { title: "Resources", links: resources },
+      { title: "About Us", links: aboutUs },
+    ],
+  }[language];
 
   useEffect(() => {
     // Use requestAnimationFrame for better performance
@@ -35,7 +98,7 @@ const Footer = () => {
   return (
     <footer
       className="bg-purple-900 text-white py-12 overflow-hidden"
-      dir="rtl"
+      dir={language === "ar" ? "rtl" : "ltr"}
     >
       <div className="container mx-auto px-6 md:px-12">
         <div
@@ -44,97 +107,41 @@ const Footer = () => {
           }`}
         >
           <div className="mb-8 md:mb-0 text-right">
-            <img src={logoImage} alt="Error 20 Logo" className="h-25 mr-2" />
-            <p className="text-purple-200 max-w-sm">
-              مساعدة الشباب على تخطي التحديات النفسية وتحقيق التوازن في حياتهم
-              المهنية والشخصية
-            </p>
+            <img
+              src={logoImage}
+              alt="Error 20 Logo"
+              className={`h-25 ${language === "ar" ? "mr-2" : "ml-2"}`}
+            />
+            <p className="text-purple-200 max-w-sm">{socialText.about}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-right">
+            {footerSections.map((section, index) => (
+              <div key={index}>
+                <h3 className="font-semibold mb-4">{section.title}</h3>
+                <ul className="space-y-2">
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <a
+                        href={link.href}
+                        className="text-purple-200 hover:text-white transition-colors hover:translate-x-1 inline-block hover:scale-105 duration-300"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
             <div>
-              <h3 className="font-semibold mb-4">موارد</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#"
-                    className="text-purple-200 hover:text-white transition-colors hover:-translate-x-1 inline-block hover:scale-105 duration-300"
-                  >
-                    المدونة
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#videos"
-                    className="text-purple-200 hover:text-white transition-colors hover:-translate-x-1 inline-block hover:scale-105 duration-300"
-                  >
-                    البودكاست
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#resources"
-                    className="text-purple-200 hover:text-white transition-colors hover:-translate-x-1 inline-block hover:scale-105 duration-300"
-                  >
-                    ملفات مجانية
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-purple-200 hover:text-white transition-colors hover:-translate-x-1 inline-block hover:scale-105 duration-300"
-                  >
-                    دراسات وأبحاث
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">من نحن</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#"
-                    className="text-purple-200 hover:text-white transition-colors hover:-translate-x-1 inline-block hover:scale-105 duration-300"
-                  >
-                    قصتنا
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-purple-200 hover:text-white transition-colors hover:-translate-x-1 inline-block hover:scale-105 duration-300"
-                  >
-                    فريق العمل
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-purple-200 hover:text-white transition-colors hover:-translate-x-1 inline-block hover:scale-105 duration-300"
-                  >
-                    انضم إلينا
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#contact"
-                    className="text-purple-200 hover:text-white transition-colors hover:-translate-x-1 inline-block hover:scale-105 duration-300"
-                  >
-                    تواصل معنا
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">تابعنا</h3>
+              <h3 className="font-semibold mb-4">{t.footer.followUs}</h3>
               <div className="flex gap-4">
                 <a
                   href="https://www.instagram.com/error_20_cu?igsh=YTJvcnRseDV3d2pr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-purple-200 hover:text-white transition-all duration-300 hover:scale-125 transform"
-                  aria-label="انستجرام"
+                  aria-label={socialText.instagram}
                 >
                   <Instagram className="w-5 h-5" />
                 </a>
@@ -143,7 +150,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-purple-200 hover:text-white transition-all duration-300 hover:scale-125 transform"
-                  aria-label="فيسبوك"
+                  aria-label={socialText.facebook}
                 >
                   <Facebook className="w-5 h-5" />
                 </a>
@@ -152,7 +159,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-purple-200 hover:text-white transition-all duration-300 hover:scale-125 transform"
-                  aria-label="تيك توك"
+                  aria-label={socialText.tiktok}
                 >
                   <TikTokIcon className="w-5 h-5" />
                 </a>
@@ -167,20 +174,21 @@ const Footer = () => {
           }`}
         >
           <p className="text-purple-300 text-sm">
-            © 2025 ايرور 20. جميع الحقوق محفوظة.
+            © 2025 {language === "ar" ? "ايرور 20" : "Error 20"}.{" "}
+            {t.footer.rights}
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a
               href="#"
               className="text-purple-300 text-sm hover:text-white transition-colors"
             >
-              سياسة الخصوصية
+              {t.footer.privacyPolicy}
             </a>
             <a
               href="#"
               className="text-purple-300 text-sm hover:text-white transition-colors"
             >
-              شروط الاستخدام
+              {t.footer.termsOfService}
             </a>
           </div>
         </div>
