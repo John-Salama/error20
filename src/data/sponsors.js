@@ -20,7 +20,7 @@ const sponsors = [
   {
     name: "NTCLC",
     fullName: "المركز الوطني للتكنولوجيا وإعداد القادة",
-    fullNameEn: "National Technology Center for Leader Creation",
+    fullNameEn: "National Center for Leader Creation",
     logo: "https://placehold.co/200x80?text=NTCLC",
     logoWidth: 200,
     logoHeight: 80,
