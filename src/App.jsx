@@ -10,6 +10,7 @@ const Testimonials = lazy(() => import("./components/sections/Testimonials"));
 const Resources = lazy(() => import("./components/sections/Resources"));
 const Videos = lazy(() => import("./components/sections/Videos"));
 const Workshops = lazy(() => import("./components/sections/Workshops"));
+const Quiz = lazy(() => import("./components/sections/Quiz"));
 const CTA = lazy(() => import("./components/sections/CTA"));
 
 // Simple loading component
@@ -41,6 +42,9 @@ const App = () => {
       </Suspense>
       <Suspense fallback={<SectionLoader />}>
         <Workshops />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <Quiz />
       </Suspense>
       <Suspense fallback={<SectionLoader />}>
         <CTA />

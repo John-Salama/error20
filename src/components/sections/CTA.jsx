@@ -7,6 +7,7 @@ const CTA = () => {
     <section
       id="contact"
       className="relative overflow-hidden bg-gradient-to-r from-purple-600 to-indigo-600 py-20 text-white"
+      dir="rtl"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 z-0">
@@ -55,7 +56,7 @@ const CTA = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold mb-6"
           >
-            Ready to Master the Error20 Framework?
+            هل أنت مستعد لتجاوز أزمة ربع العمر؟
           </motion.h2>
 
           <motion.p
@@ -65,8 +66,8 @@ const CTA = () => {
             viewport={{ once: true }}
             className="text-xl opacity-90 mb-10"
           >
-            Join thousands of professionals who have transformed their thinking
-            and decision-making.
+            انضم إلى آلاف الشباب الذين تمكنوا من تغيير حياتهم وتطوير مهاراتهم
+            واكتشاف ذواتهم.
           </motion.p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -83,7 +84,8 @@ const CTA = () => {
               viewport={{ once: true }}
               className="px-8 py-4 text-lg font-semibold rounded-lg bg-white text-purple-700 hover:bg-gray-100 transition-colors flex items-center justify-center"
             >
-              Schedule a Consultation <ArrowRight className="ml-2 w-5 h-5" />
+              احجز جلسة استشارية{" "}
+              <ArrowRight className="mr-2 w-5 h-5 rotate-180" />
             </motion.a>
 
             <motion.a
@@ -99,7 +101,7 @@ const CTA = () => {
               viewport={{ once: true }}
               className="px-8 py-4 text-lg font-semibold rounded-lg border-2 border-white bg-transparent hover:bg-white hover:text-purple-700 transition-all flex items-center justify-center"
             >
-              Sign Up for Newsletter
+              اشترك في النشرة البريدية
             </motion.a>
           </div>
         </motion.div>

@@ -19,10 +19,10 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="py-20 bg-purple-100">
+    <section id="testimonials" className="py-20 bg-purple-100" dir="rtl">
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-          What People Are Saying
+          الفعاليات والندوات
         </h2>
 
         <div className="relative">
@@ -30,23 +30,23 @@ const Testimonials = () => {
             {/* Navigation arrows */}
             <button
               onClick={goToPrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-10 bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-100 transition-colors z-10"
-              aria-label="Previous testimonial"
+              className="absolute right-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-10 bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-100 transition-colors z-10"
+              aria-label="الفعالية السابقة"
             >
-              <ChevronLeft className="w-6 h-6 text-purple-700" />
+              <ChevronRight className="w-6 h-6 text-purple-700" />
             </button>
 
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTestimonial}
-                initial={{ opacity: 100, x: 20 }}
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
+                exit={{ opacity: 0, x: 100 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white rounded-xl p-8 md:p-12 shadow-xl relative"
+                className="bg-white rounded-xl p-8 md:p-12 shadow-xl relative text-right"
               >
                 <svg
-                  className="absolute top-0 left-0 transform -translate-x-6 -translate-y-6 h-16 w-16 text-purple-300 opacity-50"
+                  className="absolute top-0 right-0 transform -translate-x-6 -translate-y-6 h-16 w-16 text-purple-300 opacity-50"
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -69,7 +69,7 @@ const Testimonials = () => {
                     />
                   </div>
                   <div className="md:w-3/4">
-                    <blockquote className="text-xl md:text-2xl italic mb-6">
+                    <blockquote className="text-xl md:text-2xl mb-6">
                       "{testimonials[activeTestimonial].quote}"
                     </blockquote>
                     <div>
@@ -85,13 +85,13 @@ const Testimonials = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Right arrow */}
+            {/* Left arrow */}
             <button
               onClick={goToNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-10 bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-100 transition-colors z-10"
-              aria-label="Next testimonial"
+              className="absolute left-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-10 bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-100 transition-colors z-10"
+              aria-label="الفعالية التالية"
             >
-              <ChevronRight className="w-6 h-6 text-purple-700" />
+              <ChevronLeft className="w-6 h-6 text-purple-700" />
             </button>
 
             <div className="flex justify-center mt-8 gap-2">
@@ -104,7 +104,7 @@ const Testimonials = () => {
                       ? "bg-purple-600"
                       : "bg-purple-300"
                   }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
+                  aria-label={`الانتقال إلى الفعالية ${index + 1}`}
                 />
               ))}
             </div>

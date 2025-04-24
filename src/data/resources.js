@@ -1,27 +1,27 @@
 const resources = [
   {
-    title: "Cognitive Biases Overview",
-    description: "A comprehensive guide to understanding cognitive biases.",
-    icon: "📘",
-    link: "https://kvongcmehsanalibrary.wordpress.com/wp-content/uploads/2021/07/harrypotter.pdf",
+    title: "Edraak",
+    description: "منصة إدراك لتعلم مهارات الحياة",
+    icon: "📖",
+    link: "https://www.edraak.org/",
   },
   {
-    title: "Decision-Making Frameworks",
-    description: "Learn about various frameworks to improve decision-making.",
-    icon: "📗",
-    link: "https://example.com/decision-making-frameworks.pdf",
+    title: "Career180",
+    description: "إرشاد وتوجيه مهني",
+    icon: "💼",
+    link: "https://career180.com",
   },
   {
-    title: "Error20 Implementation Guide",
-    description: "Step-by-step guide to implementing the Error20 framework.",
-    icon: "📙",
-    link: "https://example.com/error20-implementation-guide.pdf",
+    title: "Shezlong",
+    description: "جلسات علاج نفسي أونلاين",
+    icon: "🛋️",
+    link: "https://www.shezlong.com",
   },
   {
-    title: "Case Studies on Cognitive Biases",
-    description: "Real-world examples of cognitive biases in action.",
-    icon: "📕",
-    link: "https://example.com/case-studies-cognitive-biases.pdf",
+    title: "Almentor",
+    description: "كورسات تنمية بشرية ومهنية",
+    icon: "📚",
+    link: "https://www.almentor.net",
   },
 ];
 

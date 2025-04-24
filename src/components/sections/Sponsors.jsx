@@ -4,7 +4,7 @@ import sponsors from "../../data/sponsors";
 
 const Sponsors = () => {
   return (
-    <section id="sponsors" className="py-16 bg-white">
+    <section id="sponsors" className="py-16 bg-white" dir="rtl">
       <div className="container mx-auto px-6 md:px-12">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
@@ -13,10 +13,9 @@ const Sponsors = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Sponsored By</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">شركاؤنا</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Proud to be supported by industry leaders who believe in our
-            mission.
+            نفتخر بدعم مؤسسات رائدة تؤمن برسالتنا ومهمتنا.
           </p>
         </motion.div>
 
@@ -49,25 +48,15 @@ const Sponsors = () => {
                   className="h-12 md:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                   loading="lazy"
                 />
+                {sponsor.fullName && (
+                  <p className="mt-3 text-sm text-gray-700 font-medium text-center">
+                    {sponsor.fullName}
+                  </p>
+                )}
               </a>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <a
-            href="#contact"
-            className="inline-flex items-center text-purple-600 font-medium hover:text-purple-800 transition-colors"
-          >
-            Become a sponsor
-          </a>
-        </motion.div>
       </div>
     </section>
   );

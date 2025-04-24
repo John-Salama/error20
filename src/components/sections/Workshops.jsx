@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import workshops from "../../data/workshops";
@@ -6,8 +7,12 @@ import workshops from "../../data/workshops";
 const Workshops = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
 
+  const handleWorkshopClick = (link) => {
+    window.open(link, "_blank", "noopener noreferrer");
+  };
+
   return (
-    <section id="workshops" className="py-20 bg-white">
+    <section id="workshops" className="py-20 bg-white" dir="rtl">
       <div className="container mx-auto px-6 md:px-12">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
@@ -17,11 +22,10 @@ const Workshops = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Workshops & Training
+            ورش عمل ودورات تدريبية
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Join our expert-led workshops to master the Error20 framework and
-            transform your decision-making abilities.
+            انضم إلى ورش العمل والدورات التدريبية لتطوير مهاراتك واكتشاف ذاتك
           </p>
         </motion.div>
 
@@ -35,11 +39,12 @@ const Workshops = () => {
               viewport={{ once: true }}
               onHoverStart={() => setHoveredCard(index)}
               onHoverEnd={() => setHoveredCard(null)}
+              onClick={() => handleWorkshopClick(workshop.link)}
               className={`rounded-xl p-6 transition-all duration-300 ${
                 hoveredCard === index
                   ? "bg-purple-700 text-white"
                   : "bg-purple-50 text-gray-800"
-              } cursor-pointer`}
+              } cursor-pointer text-right`}
             >
               <div
                 className={`p-4 rounded-full w-fit ${
@@ -62,11 +67,11 @@ const Workshops = () => {
                     hoveredCard === index ? "text-white" : "text-purple-700"
                   }`}
                 >
-                  Learn more
+                  اعرف المزيد
                 </span>
                 <ArrowRight
-                  className={`ml-2 w-4 h-4 ${
-                    hoveredCard === index ? "transform translate-x-2" : ""
+                  className={`mr-2 w-4 h-4 rotate-180 ${
+                    hoveredCard === index ? "transform -translate-x-2" : ""
                   } transition-transform`}
                 />
               </div>
@@ -77,7 +82,7 @@ const Workshops = () => {
                       hoveredCard === index ? "text-white" : "text-gray-600"
                     }
                   >
-                    Date:
+                    التاريخ:
                   </span>
                   <span className="font-medium">{workshop.date}</span>
                 </div>
@@ -87,7 +92,7 @@ const Workshops = () => {
                       hoveredCard === index ? "text-white" : "text-gray-600"
                     }
                   >
-                    Duration:
+                    المدة:
                   </span>
                   <span className="font-medium">{workshop.duration}</span>
                 </div>
@@ -97,7 +102,7 @@ const Workshops = () => {
                       hoveredCard === index ? "text-white" : "text-gray-600"
                     }
                   >
-                    Instructor:
+                    المدرب:
                   </span>
                   <span className="font-medium">{workshop.instructor}</span>
                 </div>
@@ -107,7 +112,7 @@ const Workshops = () => {
                       hoveredCard === index ? "text-white" : "text-gray-600"
                     }
                   >
-                    Format:
+                    النوع:
                   </span>
                   <span className="font-medium">{workshop.location}</span>
                 </div>
@@ -117,9 +122,11 @@ const Workshops = () => {
                       hoveredCard === index ? "text-white" : "text-gray-600"
                     }
                   >
-                    Price:
+                    السعر:
                   </span>
-                  <span className="font-medium">${workshop.price}</span>
+                  <span className="font-medium">
+                    {workshop.price > 0 ? `$${workshop.price}` : "مجاني"}
+                  </span>
                 </div>
               </div>
             </motion.div>

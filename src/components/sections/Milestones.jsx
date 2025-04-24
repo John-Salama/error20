@@ -5,10 +5,10 @@ import milestones from "../../data/milestones";
 
 const Milestones = () => {
   return (
-    <section id="milestones" className="py-20 bg-white">
+    <section id="milestones" className="py-20 bg-white" dir="rtl">
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-          Our Impact
+          أثرنا وإنجازاتنا
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {milestones.map((milestone, index) => (
@@ -46,30 +46,30 @@ const Milestones = () => {
           className="mt-20 bg-gradient-to-r from-purple-50 to-indigo-50 p-8 md:p-12 rounded-2xl shadow-sm"
         >
           <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">
-            How Error20 Transforms Your Thinking
+            كيف نساعد في تخطي أزمة ربع العمر؟
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 icon: <Target className="w-8 h-8 text-purple-700" />,
                 bgColor: "bg-purple-100",
-                title: "Identify Biases",
+                title: "اكتشاف الذات",
                 description:
-                  "Learn to recognize when your thinking is affected by cognitive biases.",
+                  "مساعدتك على التعرف على نفسك بشكل أعمق وفهم مشاعرك واحتياجاتك الحقيقية.",
               },
               {
                 icon: <Rocket className="w-8 h-8 text-indigo-700" />,
                 bgColor: "bg-indigo-100",
-                title: "Apply Frameworks",
+                title: "تحديد الشغف",
                 description:
-                  "Use structured approaches to overcome limitations in thinking.",
+                  "تطوير أدوات عملية تساعدك في اكتشاف شغفك وتحويله إلى مسار مهني مناسب.",
               },
               {
                 icon: <Check className="w-8 h-8 text-pink-700" />,
                 bgColor: "bg-pink-100",
-                title: "Better Outcomes",
+                title: "تطوير الذات",
                 description:
-                  "Make decisions that lead to improved results in work and life.",
+                  "تعزيز مهاراتك الشخصية والمهنية وتحقيق التوازن في مختلف جوانب الحياة.",
               },
             ].map((item, index) => (
               <motion.div
@@ -81,7 +81,7 @@ const Milestones = () => {
                   y: -10,
                   transition: { duration: 0.2 },
                 }}
-                className="flex flex-col items-center"
+                className="flex flex-col items-center text-center"
               >
                 <motion.div
                   className={`rounded-full ${item.bgColor} p-4 mb-4`}

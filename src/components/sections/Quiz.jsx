@@ -1,0 +1,170 @@
+// filepath: /mnt/01D79881F8680A10/codeing and courses/projects/web/Frontend/error20/src/components/sections/Quiz.jsx
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import quizData from "../../data/quizData";
+
+const Quiz = () => {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [showResult, setShowResult] = useState(false);
+  const [result, setResult] = useState(null);
+
+  const handleAnswer = (questionId, answer) => {
+    setAnswers({ ...answers, [questionId]: answer });
+
+    // Move to next question
+    if (currentQuestion < quizData.questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      calculateResult();
+    }
+  };
+
+  const calculateResult = () => {
+    // Count occurrences of each answer type
+    const answerCounts = {
+      a: 0,
+      b: 0,
+      c: 0,
+      d: 0,
+    };
+
+    Object.values(answers).forEach((answer) => {
+      answerCounts[answer]++;
+    });
+
+    // Find which letter has the most selections
+    const maxAnswerType = Object.keys(answerCounts).reduce((a, b) =>
+      answerCounts[a] > answerCounts[b] ? a : b
+    );
+
+    // Find the corresponding result
+    const resultData = quizData.results.find(
+      (resultItem) => resultItem.type === maxAnswerType
+    );
+
+    setResult(resultData);
+    setShowResult(true);
+  };
+
+  const resetQuiz = () => {
+    setCurrentQuestion(0);
+    setAnswers({});
+    setShowResult(false);
+    setResult(null);
+  };
+
+  return (
+    <section id="quiz" className="py-20 bg-purple-50 text-right" dir="rtl">
+      <div className="container mx-auto px-6 md:px-12">
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            {quizData.title}
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            {quizData.description}
+          </p>
+        </motion.div>
+
+        <div className="max-w-3xl mx-auto">
+          {!showResult ? (
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <motion.div
+                key={currentQuestion}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="mb-8">
+                  <div className="text-sm text-purple-600 mb-2">
+                    سؤال {currentQuestion + 1} من {quizData.questions.length}
+                  </div>
+                  <h3 className="text-xl font-bold">
+                    {quizData.questions[currentQuestion].text}
+                  </h3>
+                </div>
+
+                <div className="space-y-4">
+                  {quizData.questions[currentQuestion].options.map((option) => (
+                    <motion.button
+                      key={option.id}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() =>
+                        handleAnswer(
+                          quizData.questions[currentQuestion].id,
+                          option.id
+                        )
+                      }
+                      className="w-full text-right p-4 rounded-lg border border-purple-200 hover:bg-purple-100 hover:border-purple-300 transition-colors"
+                    >
+                      {option.text}
+                    </motion.button>
+                  ))}
+                </div>
+              </motion.div>
+              <div className="mt-8 flex justify-between items-center">
+                <div className="text-sm text-gray-500">
+                  {Object.keys(answers).length} من {quizData.questions.length}{" "}
+                  أسئلة تم الإجابة عليها
+                </div>
+                <div className="w-1/2 bg-gray-200 rounded-full h-2.5">
+                  <div
+                    className="bg-purple-600 h-2.5 rounded-full"
+                    style={{
+                      width: `${
+                        (Object.keys(answers).length /
+                          quizData.questions.length) *
+                        100
+                      }%`,
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-white rounded-xl shadow-lg p-8"
+            >
+              <div className="text-center">
+                <div className="mb-6">
+                  <span className="inline-block p-4 bg-purple-100 rounded-full text-purple-700 text-3xl mb-4">
+                    ✨
+                  </span>
+                  <h3 className="text-2xl font-bold mb-2">{result.title}</h3>
+                </div>
+                <div className="mb-8 text-gray-700">
+                  <p className="mb-4">{result.description}</p>
+                  <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
+                    <h4 className="font-semibold mb-2">رسالة لك:</h4>
+                    <p>{result.advice}</p>
+                  </div>
+                </div>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={resetQuiz}
+                  className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                >
+                  إعادة الاختبار
+                </motion.button>
+              </div>
+            </motion.div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Quiz;

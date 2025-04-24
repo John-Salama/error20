@@ -23,10 +23,10 @@ const Videos = () => {
   );
 
   return (
-    <section id="videos" className="py-20 bg-purple-100">
+    <section id="videos" className="py-20 bg-purple-100" dir="rtl">
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          Video Learning Resources
+          البودكاست والمحتوى المرئي
         </h2>
 
         <div className="flex flex-col lg:flex-row gap-12">
@@ -73,19 +73,19 @@ const Videos = () => {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <button
                       className="w-20 h-20 bg-purple-700 rounded-full flex items-center justify-center hover:bg-purple-800 transition-colors text-white"
-                      aria-label="Play video"
+                      aria-label="تشغيل الفيديو"
                       onClick={handlePlayClick}
                     >
                       <Play className="w-10 h-10 ml-1" />
                     </button>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-1 sm:p-6">
-                    <div className="text-white">
+                    <div className="text-white text-right">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                         <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-0">
                           {videos[activeVideo].title}
                         </h3>
-                        <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm w-fit">
+                        <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm w-fit mr-auto sm:mr-0">
                           {videos[activeVideo].duration}
                         </span>
                       </div>
@@ -102,11 +102,11 @@ const Videos = () => {
           </div>
 
           <div className="lg:w-1/3">
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold mb-4">Featured Videos</h3>
+            <div className="mb-8 text-right">
+              <h3 className="text-2xl font-bold mb-4">حلقات مميزة</h3>
               <p className="text-gray-700 mb-6">
-                Learn about cognitive biases and decision-making through our
-                curated video collection.
+                اكتشف محتوى متنوع لمساعدتك على فهم أزمة ربع العمر وتخطي التحديات
+                النفسية والمهنية
               </p>
             </div>
 
@@ -114,9 +114,9 @@ const Videos = () => {
               {videos.map((video, index) => (
                 <div
                   key={index}
-                  className={`p-4 rounded-lg cursor-pointer transition-all ${
+                  className={`p-4 rounded-lg cursor-pointer transition-all text-right ${
                     activeVideo === index
-                      ? "bg-white shadow-md border-l-4 border-purple-600"
+                      ? "bg-white shadow-md border-r-4 border-purple-600"
                       : "bg-purple-50 hover:bg-white"
                   }`}
                   onClick={() => handleVideoItemClick(index)}
@@ -148,12 +148,13 @@ const Videos = () => {
               ))}
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8 text-right">
               <a
                 href="#"
                 className="inline-flex items-center font-semibold bg-white text-purple-700 px-6 py-3 rounded-lg shadow-sm hover:bg-purple-50 transition-colors"
               >
-                View Complete Library <ArrowRight className="ml-2 w-4 h-4" />
+                <ArrowRight className="ml-2 w-4 h-4 rotate-180" /> عرض المكتبة
+                كاملة
               </a>
             </div>
           </div>

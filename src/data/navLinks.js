@@ -1,10 +1,11 @@
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "Impact", href: "#milestones" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "Resources", href: "#resources" },
-  { name: "Videos", href: "#videos" },
-  { name: "Workshops", href: "#workshops" },
+  { name: "الرئيسية", href: "#home" },
+  { name: "الفعاليات", href: "#milestones" },
+  { name: "الندوات", href: "#testimonials" },
+  { name: "الموارد", href: "#resources" },
+  { name: "البودكاست", href: "#videos" },
+  { name: "الورش", href: "#workshops" },
+  { name: "الاختبار", href: "#quiz" },
 ];
 
 export default navLinks;

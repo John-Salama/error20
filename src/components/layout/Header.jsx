@@ -84,6 +84,7 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
+      dir="rtl"
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <motion.a
@@ -93,15 +94,15 @@ const Header = () => {
           whileHover="hover"
           initial="normal"
         >
-          <span className="mr-2 bg-purple-700 text-white px-2 py-1 rounded-lg transform rotate-3">
-            E
+          <span className="ml-2 bg-purple-700 text-white px-2 py-1 rounded-lg transform rotate-3">
+            أ
           </span>
-          <span>rror20</span>
+          <span>زمة العمر</span>
         </motion.a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center">
-          <ul className="flex gap-1 mr-8">
+          <ul className="flex gap-1 ml-8">
             {navLinks.map((link, index) => (
               <motion.li
                 key={link.name}
@@ -141,7 +142,7 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
-            Get Started
+            تواصل معنا
           </motion.a>
         </nav>
 
@@ -151,7 +152,7 @@ const Header = () => {
           onClick={toggleNav}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          aria-label={isNavOpen ? "Close menu" : "Open menu"}
+          aria-label={isNavOpen ? "إغلاق القائمة" : "فتح القائمة"}
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -190,17 +191,15 @@ const Header = () => {
             />
 
             <motion.div
-              className="absolute top-0 right-0 w-4/5 h-screen bg-white shadow-2xl"
-              initial={{ x: "100%" }}
+              className="absolute top-0 left-0 w-4/5 h-screen bg-white shadow-2xl"
+              initial={{ x: "-100%" }}
               animate={{ x: 0 }}
-              exit={{ x: "100%" }}
+              exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
             >
-              <div className="p-6 overflow-y-auto h-full flex flex-col">
+              <div className="p-6 overflow-y-auto h-full flex flex-col text-right">
                 <div className="flex items-center justify-between mb-8">
-                  <h2 className="text-xl font-bold text-purple-700">
-                    Navigation
-                  </h2>
+                  <h2 className="text-xl font-bold text-purple-700">القائمة</h2>
                 </div>
 
                 <nav className="flex-grow">
@@ -208,13 +207,13 @@ const Header = () => {
                     {navLinks.map((link, index) => (
                       <motion.li
                         key={link.name}
-                        initial={{ x: 50, opacity: 0 }}
+                        initial={{ x: -50, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: index * 0.1 + 0.1 }}
                       >
                         <a
                           href={link.href}
-                          className={`flex items-center py-3 px-4 rounded-lg ${
+                          className={`flex items-center py-3 px-4 rounded-lg justify-end ${
                             activeLink === link.href.substring(1)
                               ? "bg-purple-100 text-purple-700 font-medium"
                               : "text-gray-700 hover:bg-gray-100"
@@ -223,7 +222,7 @@ const Header = () => {
                         >
                           <span>{link.name}</span>
                           {activeLink === link.href.substring(1) && (
-                            <motion.div className="w-1.5 h-1.5 ml-2 rounded-full bg-purple-700" />
+                            <motion.div className="w-1.5 h-1.5 mr-2 rounded-full bg-purple-700" />
                           )}
                         </a>
                       </motion.li>
@@ -242,7 +241,7 @@ const Header = () => {
                     className="flex items-center justify-center w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-lg font-medium hover:shadow-lg"
                     onClick={handleMobileNavClick}
                   >
-                    Get Started
+                    تواصل معنا
                   </a>
 
                   <div className="mt-6 flex justify-center gap-4">

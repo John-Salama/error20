@@ -1,31 +1,31 @@
 const testimonials = [
   {
-    name: "John Doe",
-    role: "Project Manager",
+    name: "منال سامي",
+    role: "معالجة نفسية",
     quote:
-      "The Error20 framework has transformed the way I approach decision-making.",
-    image: "path/to/john_doe_image.jpg",
-  },
-  {
-    name: "Jane Smith",
-    role: "Data Analyst",
-    quote:
-      "I never realized how much cognitive biases affected my work until I started using Error20.",
-    image: "path/to/jane_smith_image.jpg",
-  },
-  {
-    name: "Emily Johnson",
-    role: "UX Designer",
-    quote:
-      "Error20 helped me identify biases in my design process, leading to better user experiences.",
+      "أزمة ربع العمر هي فترة حرجة لتطوير الشباب. من خلال التوعية والدعم النفسي، يمكننا مساعدتهم في اكتشاف ذاتهم وتحديد مسارهم الصحيح.",
     image: "path/to/emily_johnson_image.jpg",
   },
   {
-    name: "Michael Brown",
-    role: "Software Engineer",
+    name: "نورهان عبد المجيد",
+    role: "مدربة تطوير مهني",
     quote:
-      "The insights gained from Error20 have been invaluable in my career.",
+      "اكتشاف الشغف وتحديد المسار المهني المناسب يمثل تحدياً كبيراً للشباب. ورش العمل والتوجيه المهني يساعدان في توضيح الرؤية وبناء مستقبل مهني ناجح.",
     image: "path/to/michael_brown_image.jpg",
+  },
+  {
+    name: "فعالية كلية الإعلام",
+    role: "٢٠ فبراير ٢٠٢٥",
+    quote:
+      "قمنا بتنظيم فعالية توعوية داخل كلية الإعلام بجامعة القاهرة ناقشت واحدة من أهم الأزمات التي يمر بها الشباب وهي 'أزمة ربع العمر'. استضافت الفعالية المعالجة النفسية منال سامي والمدربة نورهان عبد المجيد.",
+    image: "path/to/john_doe_image.jpg",
+  },
+  {
+    name: "ندوة مكتبة مصر العامة",
+    role: "١١ أبريل ٢٠٢٥",
+    quote:
+      "نظمنا ندوة توعوية ضمن حملتنا حول 'أزمة ربع العمر' بمكتبة مصر العامة فرع الزيتون، بحضور المعالجة النفسية رانيا شعيب، ويسرى أحمد التي شاركت تجربتها الشخصية في مواجهة أزمة ربع العمر.",
+    image: "path/to/jane_smith_image.jpg",
   },
 ];
 
