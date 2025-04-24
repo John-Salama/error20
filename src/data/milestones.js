@@ -1,7 +1,7 @@
 const milestones = [
-  { number: "٢٠٠+", label: "مشارك في فعالياتنا" },
-  { number: "٢", label: "ندوات توعوية" },
-  { number: "١٠+", label: "خبراء ومتخصصين" },
+  { number: "600+", label: "مشارك في فعالياتنا" },
+  { number: "4", label: "ندوات توعوية" },
+  { number: "6+", label: "خبراء ومتخصصين" },
 ];
 
 export default milestones;

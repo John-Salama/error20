@@ -61,14 +61,7 @@ const Testimonials = () => {
                 </svg>
 
                 <div className="flex flex-col md:flex-row md:items-center gap-8">
-                  <div className="md:w-1/4">
-                    <img
-                      src={testimonials[activeTestimonial].image}
-                      alt={testimonials[activeTestimonial].name}
-                      className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover mx-auto"
-                    />
-                  </div>
-                  <div className="md:w-3/4">
+                  <div className="md:w-full">
                     <blockquote className="text-xl md:text-2xl mb-6">
                       "{testimonials[activeTestimonial].quote}"
                     </blockquote>

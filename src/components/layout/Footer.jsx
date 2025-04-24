@@ -1,5 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Twitter, Instagram, Facebook, Mail } from "lucide-react";
+import { Instagram, Facebook } from "lucide-react";
+import logoImage from "../../data/thumbnail/logo.png";
+
+// Custom TikTok icon component
+const TikTokIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4c0 1.1.9 2 2 2h3" />
+    <path d="M12 16v-2" />
+  </svg>
+);
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,7 +44,7 @@ const Footer = () => {
           }`}
         >
           <div className="mb-8 md:mb-0 text-right">
-            <h2 className="text-2xl font-bold mb-4">أزمة ربع العمر</h2>
+            <img src={logoImage} alt="Error 20 Logo" className="h-25 mr-2" />
             <p className="text-purple-200 max-w-sm">
               مساعدة الشباب على تخطي التحديات النفسية وتحقيق التوازن في حياتهم
               المهنية والشخصية
@@ -110,32 +130,31 @@ const Footer = () => {
               <h3 className="font-semibold mb-4">تابعنا</h3>
               <div className="flex gap-4">
                 <a
-                  href="#"
-                  className="text-purple-200 hover:text-white transition-all duration-300 hover:scale-125 transform"
-                  aria-label="تويتر"
-                >
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a
-                  href="#"
+                  href="https://www.instagram.com/error_20_cu?igsh=YTJvcnRseDV3d2pr"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-purple-200 hover:text-white transition-all duration-300 hover:scale-125 transform"
                   aria-label="انستجرام"
                 >
                   <Instagram className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.facebook.com/share/1A2iKBpkps/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-purple-200 hover:text-white transition-all duration-300 hover:scale-125 transform"
                   aria-label="فيسبوك"
                 >
                   <Facebook className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.tiktok.com/@error_20__?_t=ZS-8vo0SJDL2gP&_r=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-purple-200 hover:text-white transition-all duration-300 hover:scale-125 transform"
-                  aria-label="البريد الإلكتروني"
+                  aria-label="تيك توك"
                 >
-                  <Mail className="w-5 h-5" />
+                  <TikTokIcon className="w-5 h-5" />
                 </a>
               </div>
             </div>
@@ -148,7 +167,7 @@ const Footer = () => {
           }`}
         >
           <p className="text-purple-300 text-sm">
-            © 2025 أزمة ربع العمر. جميع الحقوق محفوظة.
+            © 2025 ايرور 20. جميع الحقوق محفوظة.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a

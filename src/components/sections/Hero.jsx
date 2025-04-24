@@ -30,7 +30,7 @@ const Hero = () => {
               variants={textAnimation}
               className="text-4xl md:text-6xl font-extrabold mb-6 text-gray-900"
             >
-              تخطي <span className="text-purple-700">أزمة ربع العمر</span> بوعي
+              لتخطي أزمة ربع العمر بوعي
             </motion.h1>
             <motion.p
               initial="hidden"

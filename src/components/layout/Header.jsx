@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import navLinks from "../../data/navLinks";
+import logoImage from "../../data/thumbnail/logo.png";
 
 // Extracting static variants outside component to prevent recreation
 const navItemVariants = {
@@ -94,10 +95,7 @@ const Header = () => {
           whileHover="hover"
           initial="normal"
         >
-          <span className="ml-2 bg-purple-700 text-white px-2 py-1 rounded-lg transform rotate-3">
-            أ
-          </span>
-          <span>زمة العمر</span>
+          <img src={logoImage} alt="Error 20 Logo" className="h-20 mr-2" />
         </motion.a>
 
         {/* Desktop Navigation */}
@@ -200,6 +198,14 @@ const Header = () => {
               <div className="p-6 overflow-y-auto h-full flex flex-col text-right">
                 <div className="flex items-center justify-between mb-8">
                   <h2 className="text-xl font-bold text-purple-700">القائمة</h2>
+                  <div className="flex items-center">
+                    <img
+                      src={logoImage}
+                      alt="Error 20 Logo"
+                      className="h-8 ml-2"
+                    />
+                    <span className="text-purple-700 font-bold">ايرور 20</span>
+                  </div>
                 </div>
 
                 <nav className="flex-grow">

@@ -56,7 +56,7 @@ const CTA = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold mb-6"
           >
-            هل أنت مستعد لتجاوز أزمة ربع العمر؟
+            هل أنت مستعد لتجاوز أزمة ربع العمر مع ايرور 20؟
           </motion.h2>
 
           <motion.p
@@ -84,8 +84,7 @@ const CTA = () => {
               viewport={{ once: true }}
               className="px-8 py-4 text-lg font-semibold rounded-lg bg-white text-purple-700 hover:bg-gray-100 transition-colors flex items-center justify-center"
             >
-              احجز جلسة استشارية{" "}
-              <ArrowRight className="mr-2 w-5 h-5 rotate-180" />
+              تواصل معنا الآن <ArrowRight className="mr-2 w-5 h-5 rotate-180" />
             </motion.a>
 
             <motion.a
@@ -101,7 +100,7 @@ const CTA = () => {
               viewport={{ once: true }}
               className="px-8 py-4 text-lg font-semibold rounded-lg border-2 border-white bg-transparent hover:bg-white hover:text-purple-700 transition-all flex items-center justify-center"
             >
-              اشترك في النشرة البريدية
+              انضم إلى مجتمعنا
             </motion.a>
           </div>
         </motion.div>
