@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/src/data/thumbnail/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <meta
       name="description"
       content="ايرور 20 - تخطي أزمة ربع العمر بوعي وعزم"
@@ -13,9 +16,25 @@
     <!-- Preconnect to critical domains -->
     <link rel="preconnect" href="https://www.facebook.com" crossorigin />
     <link rel="preconnect" href="https://placehold.co" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- DNS prefetch to speed up external requests -->
     <link rel="dns-prefetch" href="https://example.com" />
+
+    <!-- Preload critical fonts -->
+    <link
+      rel="preload"
+      as="font"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      crossorigin
+    />
 
     <!-- Critical preload for key resources -->
     <link
@@ -30,8 +49,9 @@
       body {
         background-color: #f9f5ff; /* purple-50 */
         margin: 0;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
+        font-family: "Noto Sans Arabic", "Inter", system-ui, -apple-system,
+          BlinkMacSystemFont, "Segoe UI", sans-serif;
+        -webkit-font-smoothing: antialiased;
       }
       .loading-spinner {
         position: fixed;
@@ -65,6 +85,17 @@
         bottom: 20px;
         right: 20px;
         z-index: 9999;
+      }
+
+      /* Font display strategy */
+      @font-face {
+        font-family: "Noto Sans Arabic";
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Inter";
+        font-display: swap;
       }
     </style>
 
