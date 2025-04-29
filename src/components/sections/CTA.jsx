@@ -95,7 +95,7 @@ const CTA = () => {
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <motion.a
-              href="#"
+              href="https://www.facebook.com/share/1A2iKBpkps/"
               initial={{ x: language === "ar" ? -30 : 30, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -116,7 +116,7 @@ const CTA = () => {
             </motion.a>
 
             <motion.a
-              href="#"
+              href="https://www.facebook.com/share/1A2iKBpkps/"
               initial={{ x: language === "ar" ? 30 : -30, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}

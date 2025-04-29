@@ -6,7 +6,6 @@ const workshops = [
       "كورس مجاني مقدم من منصة إدراك لتعلم مهارات إدارة القلق والتوتر",
     descriptionEn:
       "Free course offered by Edraak platform to learn anxiety and stress management skills",
-    date: "2025-04-24",
     duration: "٦ ساعات",
     durationEn: "6 hours",
     instructor: "منصة إدراك",
@@ -24,7 +23,6 @@ const workshops = [
     description: "كورس مجاني للتخطيط لحياتك المهنية وتحديد المسار الوظيفي",
     descriptionEn:
       "Free course for planning your professional life and determining your career path",
-    date: "2025-04-30",
     duration: "٤ ساعات",
     durationEn: "4 hours",
     instructor: "منصة إدراك",
@@ -42,9 +40,8 @@ const workshops = [
     description: "كورس مجاني لفهم الذات وتطوير المهارات الشخصية",
     descriptionEn:
       "Free course for self-understanding and developing personal skills",
-    date: "2025-05-10",
-    duration: "٣ ساعات",
-    durationEn: "3 hours",
+    duration: "٥ ساعات",
+    durationEn: "5 hours",
     instructor: "منصة إدراك",
     instructorEn: "Edraak Platform",
     location: "أونلاين",
@@ -57,10 +54,10 @@ const workshops = [
   {
     title: "أساسيات التخطيط الاستراتيجي",
     titleEn: "Strategic Planning Fundamentals",
-    description: "ورشة عمل مقدمة من Techno Clinic لاكتشاف الشغف المهني والشخصي",
+    description:
+      "كورس مجاني في التفكير الاستراتيجي لتحقيق الأهداف المشتركة بكفاءة ومرونة",
     descriptionEn:
-      "Workshop presented by Techno Clinic to discover professional and personal passion",
-    date: "2025-05-15",
+      "Free course in strategic thinking to achieve shared goals efficiently and flexibly",
     duration: "ساعتان",
     durationEn: "2 hours",
     instructor: "منصة إدراك",

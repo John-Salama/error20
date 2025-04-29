@@ -26,7 +26,7 @@ const Hero = () => {
     >
       {/* Hero content */}
       <div className="container mx-auto px-6 md:px-12 relative z-10 pt-20">
-        <div className="flex flex-col md:flex-row items-center">
+        <div className="flex flex-col md:flex-row items-center gap-4">
           <div className="md:w-1/2 md:pr-12 text-right">
             <motion.h1
               initial="hidden"

@@ -18,7 +18,6 @@ const Workshops = () => {
       subtitle:
         "انضم إلى ورش العمل والدورات التدريبية لتطوير مهاراتك واكتشاف ذاتك",
       learnMore: "اعرف المزيد",
-      date: "التاريخ:",
       duration: "المدة:",
       instructor: "المدرب:",
       type: "النوع:",
@@ -29,7 +28,6 @@ const Workshops = () => {
       subtitle:
         "Join workshops and training courses to develop your skills and discover yourself",
       learnMore: "Learn More",
-      date: "Date:",
       duration: "Duration:",
       instructor: "Instructor:",
       type: "Type:",
@@ -39,21 +37,6 @@ const Workshops = () => {
 
   const handleWorkshopClick = (link) => {
     window.open(link, "_blank", "noopener noreferrer");
-  };
-
-  const formatDate = (dateString) => {
-    if (language === "ar") {
-      // Keep the original format for Arabic
-      return dateString;
-    } else {
-      // Format as Month Day, Year for English
-      const date = new Date(dateString);
-      return date.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
-    }
   };
 
   return (
@@ -135,18 +118,6 @@ const Workshops = () => {
                 />
               </div>
               <div className="mt-4 flex flex-col gap-2">
-                <div className="flex justify-between">
-                  <span
-                    className={
-                      hoveredCard === index ? "text-white" : "text-gray-600"
-                    }
-                  >
-                    {content.date}
-                  </span>
-                  <span className="font-medium">
-                    {formatDate(workshop.date)}
-                  </span>
-                </div>
                 <div className="flex justify-between">
                   <span
                     className={
