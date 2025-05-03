@@ -91,5 +91,7 @@ export const en = {
     termsOfService: "Terms of Service",
     contactUs: "Contact Us",
     followUs: "Follow Us",
+    downloadApp: "Download Our App",
+    getOnGooglePlay: "Get it on Google Play",
   },
 };

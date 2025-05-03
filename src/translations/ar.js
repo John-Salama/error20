@@ -86,5 +86,7 @@ export const ar = {
     termsOfService: "شروط الخدمة",
     contactUs: "اتصل بنا",
     followUs: "تابعنا",
+    downloadApp: "حمّل تطبيقنا",
+    getOnGooglePlay: "احصل عليه من جوجل بلاي",
   },
 };
