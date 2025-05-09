@@ -12,57 +12,57 @@ const PrivacyPolicy = () => {
       title: "سياسة الخصوصية",
       lastUpdated: "آخر تحديث: ٩ مايو ٢٠٢٥",
       intro:
-        "نشكرك على زيارة موقع ايرور 20. نحن نأخذ خصوصيتك على محمل الجد. تصف سياسة الخصوصية هذه كيفية جمع معلوماتك واستخدامها.",
+        "نشكرك على زيارة موقع ايرور 20. نحن نقدر خصوصيتك بشكل كبير. سياسة الخصوصية هذه توضح كيف أننا لا نجمع أي معلومات من المستخدمين.",
       sections: [
         {
-          title: "المعلومات التي نجمعها",
+          title: "عدم جمع المعلومات",
           content:
-            "نحن نجمع معلومات مثل اسمك وبريدك الإلكتروني عندما تتواصل معنا أو تشترك في النشرة الإخبارية. نستخدم ملفات تعريف الارتباط لتتبع تفاعلك مع موقعنا وتحسين تجربة المستخدم.",
+            "نحن لا نجمع أي معلومات شخصية أو بيانات من المستخدمين. لا نستخدم ملفات تعريف الارتباط (كوكيز) لتتبع المستخدمين أو تخزين أي معلومات شخصية.",
         },
         {
-          title: "كيف نستخدم معلوماتك",
+          title: "تقنيات التتبع",
           content:
-            "نستخدم المعلومات التي نجمعها للتواصل معك، وتقديم المحتوى المطلوب، وتحسين خدماتنا. لن نشارك معلوماتك الشخصية مع أطراف ثالثة دون موافقتك، باستثناء ما تقتضيه القوانين.",
+            "موقعنا لا يستخدم أي تقنيات تتبع أو تحليلات تجمع البيانات الشخصية. نحن نحترم خصوصيتك بشكل كامل.",
         },
         {
-          title: "أمن البيانات",
+          title: "مشاركة البيانات",
           content:
-            "نحن نتخذ تدابير أمنية لحماية معلوماتك. نستخدم تقنيات التشفير ونتبع أفضل الممارسات في المجال لضمان سرية بياناتك.",
+            "بما أننا لا نجمع أي معلومات، فلا توجد بيانات يمكن مشاركتها مع أطراف ثالثة.",
         },
         {
           title: "حقوقك",
           content:
-            "لديك الحق في الوصول إلى بياناتك الشخصية، وتصحيحها، وطلب حذفها. يمكنك أيضًا الاعتراض على معالجة بياناتك لأغراض تسويقية.",
+            "نحن نؤمن بالحق في الخصوصية. إذا كانت لديك أي أسئلة حول ممارساتنا، يرجى التواصل معنا.",
         },
       ],
-      contact: "للأسئلة المتعلقة بسياسة الخصوصية، يرجى التواصل معنا على:",
+      contact: "للاستفسارات المتعلقة بسياسة الخصوصية، يمكنك التواصل معنا على:",
       email: "privacy@error20.org",
     },
     en: {
       title: "Privacy Policy",
       lastUpdated: "Last Updated: May 9, 2025",
       intro:
-        "Thank you for visiting Error 20. We take your privacy seriously. This Privacy Policy describes how your information is collected and used.",
+        "Thank you for visiting Error 20. We greatly value your privacy. This Privacy Policy explains that we do not collect any information from users.",
       sections: [
         {
-          title: "Information We Collect",
+          title: "No Information Collection",
           content:
-            "We collect information such as your name and email address when you contact us or subscribe to our newsletter. We use cookies to track your interaction with our site and improve user experience.",
+            "We do not collect any personal information or data from users. We do not use cookies to track users or store any personal information.",
         },
         {
-          title: "How We Use Your Information",
+          title: "Tracking Technologies",
           content:
-            "We use the information we collect to communicate with you, provide requested content, and improve our services. We will not share your personal information with third parties without your consent, except as required by law.",
+            "Our website does not use any tracking technologies or analytics that collect personal data. We fully respect your privacy.",
         },
         {
-          title: "Data Security",
+          title: "Data Sharing",
           content:
-            "We take security measures to protect your information. We use encryption technologies and follow industry best practices to ensure your data remains confidential.",
+            "Since we do not collect any information, there is no data to share with third parties.",
         },
         {
           title: "Your Rights",
           content:
-            "You have the right to access your personal data, correct it, and request deletion. You can also object to the processing of your data for marketing purposes.",
+            "We believe in the right to privacy. If you have any questions about our practices, please contact us.",
         },
       ],
       contact:
