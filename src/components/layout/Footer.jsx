@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Instagram, Facebook } from "lucide-react";
 import logoImage from "../../data/thumbnail/logo.png";
 import { useLanguage } from "../../context/useLanguage";
@@ -209,12 +210,12 @@ const Footer = () => {
             {t.footer.rights}
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a
-              href="#"
+            <Link
+              to="/privacy-policy"
               className="text-purple-300 text-sm hover:text-white transition-colors"
             >
               {t.footer.privacyPolicy}
-            </a>
+            </Link>
             <a
               href="#"
               className="text-purple-300 text-sm hover:text-white transition-colors"
