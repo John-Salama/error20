@@ -45,6 +45,15 @@ export default defineConfig({
     hmr: {
       overlay: false,
     },
+    // Ensure client-side routing works in development
+    historyApiFallback: true,
+  },
+  // Enable SPA routing mode for preview and build
+  preview: {
+    port: 5173,
+    strictPort: true,
+    // Handle SPA routing in preview mode
+    historyApiFallback: true,
   },
   // Enable performance measurements
   performance: true,
