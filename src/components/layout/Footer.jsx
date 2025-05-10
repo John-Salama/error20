@@ -136,7 +136,7 @@ const Footer = () => {
             <div className="mt-6">
               <h3 className="font-semibold mb-3">{t.footer.downloadApp}</h3>
               <a
-                href="#"
+                href="https://play.google.com/store/apps/details?id=com.tohsakasu.Error20"
                 className="inline-flex items-center bg-white text-purple-900 px-4 py-2 rounded-lg hover:bg-purple-100 transition-colors duration-300"
                 target="_blank"
                 rel="noopener noreferrer"
